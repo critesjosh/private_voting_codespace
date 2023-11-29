@@ -1,6 +1,6 @@
 {
   "dockerComposeFile": "docker-compose.yml",
-  "runServices": ["ethereum", "aztec"],
+  "service": "ethereum",
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose"
 }
