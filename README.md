@@ -4,7 +4,7 @@ Check that the docker containers are running
 docker ps
 ```
 
-Check logs with
+Check sandbox logs with
 
 ```bash
 docker logs devcontainer-aztec-1
