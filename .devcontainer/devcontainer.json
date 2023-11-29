@@ -1,5 +1,6 @@
 {
   "dockerComposeFile": "docker-compose.yml",
-  "service": "ethereum",
-  "shutdownAction": "stopCompose"
+  "service": "devcontainer",
+  "shutdownAction": "stopCompose",
+  "features": { "ghcr.io/devcontainers/features/docker-in-docker:2": {} }
 }
