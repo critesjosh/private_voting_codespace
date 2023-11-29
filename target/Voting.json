@@ -1,0 +1,998 @@
+{
+  "name": "Voting",
+  "functions": [
+    {
+      "name": "_initialize",
+      "functionType": "open",
+      "isInternal": true,
+      "parameters": [
+        {
+          "name": "admin",
+          "type": {
+            "kind": "struct",
+            "path": "aztec::types::address::AztecAddress",
+            "fields": [
+              {
+                "name": "address",
+                "type": {
+                  "kind": "field"
+                }
+              }
+            ]
+          },
+          "visibility": "private"
+        }
+      ],
+      "returnTypes": [
+        {
+          "kind": "struct",
+          "path": "aztec::abi::PublicCircuitPublicInputs",
+          "fields": [
+            {
+              "name": "call_context",
+              "type": {
+                "kind": "struct",
+                "path": "aztec::abi::CallContext",
+                "fields": [
+                  {
+                    "name": "msg_sender",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "storage_contract_address",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "portal_contract_address",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "function_selector",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "is_delegate_call",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  },
+                  {
+                    "name": "is_static_call",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  },
+                  {
+                    "name": "is_contract_deployment",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "args_hash",
+              "type": {
+                "kind": "field"
+              }
+            },
+            {
+              "name": "return_values",
+              "type": {
+                "kind": "array",
+                "length": 4,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "contract_storage_update_requests",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "struct",
+                  "path": "aztec::abi::ContractStorageUpdateRequest",
+                  "fields": [
+                    {
+                      "name": "storage_slot",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "old_value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "new_value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "contract_storage_read",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "struct",
+                  "path": "aztec::abi::ContractStorageRead",
+                  "fields": [
+                    {
+                      "name": "storage_slot",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "public_call_stack",
+              "type": {
+                "kind": "array",
+                "length": 4,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_commitments",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_nullifiers",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_l2_to_l1_msgs",
+              "type": {
+                "kind": "array",
+                "length": 2,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "unencrypted_logs_hash",
+              "type": {
+                "kind": "array",
+                "length": 2,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "unencrypted_log_preimages_length",
+              "type": {
+                "kind": "field"
+              }
+            },
+            {
+              "name": "block_data",
+              "type": {
+                "kind": "struct",
+                "path": "aztec::abi::HistoricBlockData",
+                "fields": [
+                  {
+                    "name": "note_hash_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "nullifier_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "contract_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "l1_to_l2_messages_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "blocks_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "public_data_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "global_variables_hash",
+                    "type": {
+                      "kind": "field"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "prover_address",
+              "type": {
+                "kind": "field"
+              }
+            }
+          ]
+        }
+      ],
+      "bytecode": "H4sIAAAAAAAA/+2dB5hlRZXH3+3uCdXVE2CyzEz3RJJI9x0QEZEGHkhOkiRJmCEJDA4zZBERkYxIEhDBdV11TWsO6Cq6iq5pTWtaFde0ruu6rmvAgFt1X/2Zf9cUV/qbOvTtr0993/luhVf1/51z6t537+vX3Q+0Wq2i1Sndzma1Ni0YHw7Hwc0rQ0W+tQYlObvGCWf3OOHsGSeck8YJ5+RxwjllnHBOHSecZpxw9o4TTjtOOPvGCee0ccI5fZxwzhgnnDPHCecW44Rzy3HCOSsj5wLinB2Oc8JxbjjOC8f54Yg5TwvHrYKPPaG90NkiZ4ud9YcxBGTA2RJnS50tc7bc2QpnK51t7WwbZ9s6287Z9s6e7mwHZ89wtmNYZ8hZ6WyVs52c7ezsmc52cfYsZ7s6e7az3Zw9x9nuzp7rbI8Qtz2d7eVsb2dtZ/s429fZ85zt52x/Zwc4O9DZQc4OdnaIs0ODLwPBl8OcHe7sCGfPd3aks6OcHe3sGGfHOnuBs+OcHe/sBGcnOjvJ2QudnezsFGenOjvN2Wpna5yd7uwMZ2c6O8vZ2c5e5OwcZ+c6O8/Z2ijm5zt7sbN1zi4IYzPD2HpnG5xd6OwiZxc7u8TZpc4uc3a5s5c4u8LZS51d6exlzq5y9vJoraudvcLZNc5e6exaZ9c5u97ZDc5udHaTs5ud3eLsVc5udfZqZ7eFtbrCWrc7uyPqu9PZXaH+mnC8OxzvCcd7w/G14XhfOL4uHO8PxwecvaOvU/f3cNjfW7Y29uH5ewvqw/hM6sP4DOrD+HTqw/g06sN4H/Vh3FIfxnupj8dxxPhU6sP4FOrD+GTqw/gk6sN4D/VhvJv6MN5FfRgvqA/jrUjfl+FwHNzMMrmV/bo66H0eJD9aCX/5s5vY355EXCYl4sf5wDjnDeOcXx7HEeO8XzDO+wbjvP8wzvsU47yfMc77HuN8fmCczyOM8/mG8VnUh/HZ1IfxOdSH8bnUh/F51Ifx+dSH8QXUh3G8j3m/JlN7OBwHN6+UhnRRiqg9THXoe5at8rIMepaFUSy8zqK8OtVnjgsj/9CGliWGrQRZbEJbQKc0kc++1OWZWfrzslR5XjwKln5iGRBgwZoLSWdJXp0hvjfDumhDi/fCYuobeIrigOsV1vbvCfuTZuZrTxUTPreGiQFa3fSa9X0buQ4Ofb00voD6MB/x5D3Hec68tyufeG8PU7uf+HB+LZZjGeT1eyhO/RRbjH+w2Pi6Y4hpQV6mUV+HFojFZ6hR1yGBa06V/6XED1/Bbml8Cfm2NC9H7bWP+ZRVWZVVWZVVWZVVWZV1YrM+0bP5WLCkns3zswwN2oS21PM+PovE2v7Z782kuTizbz7OCyKf5kYx7abXvJu43hbq/LzPeyLvZxPlafk/gxsa9B9fTCV+rA/21Oe/CygGDxZSuRn958CSn1vwec/7Zaw+kwNDvyCLTWjn1ykH2eeu1shzUOB6P4SK110W+QUOaHXTaz4RjtPC65dljUOHh98HB1obz0toxcwDf4X54XD05+oZdK5mPj/KzfncKvd+4nP1ybAI3lMMSuwTv8Zy4h8IR74vwDjvleV5OYbi/TpMbeZTVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmUdL6yG+haPMYttbfrz8vws5aBNaEt8Xs6/e4K1e5wdSz+7GMjsm186/h7tvCim3fSaq4uNXCeEei+NL26JsZ6WP+bl4z8D7o/iDnb8fMTnBuce/wxUYt9DB+uizft+QcQnwWIT2j7vZ1De4+/w816Q+1nx0Gb9nEviZ5d8XRgmDdZdkVd3iHWLYNBAfzfVL6YArdhYfTyHYPY5XJp4HdcHojmWxpcK+/xE5we0/B49l3xdmuCeS9wY5+tg5mt7xb0k4pgb8fE1hr9LM1bXmIXEKsPS+X5VrM3fhULMfE75u1ADWTlGvg92tUbmh/3PdB0b8T2MpdH6/ZHv3fSa68O+9t/DSO0pzJ1Ha2bay7XfHQHHUmLGa24hZqnrb3yOP5nvjtQx3073Oe+l97uBML6Y1u1/gnX5d+ky+zzi/nhSxLGM/MFr7qEc+MLPG/i+G7j5+s/va3mv5Z3vqjAH4sllmOoriGXrrCydPbQNrT9MGqy7bV7dIdbFezg00N9N9bdSgLbdWH18X4LZ53Bl4nVcXx7NsTS+UtjnrYljmNrQ8ufdA+TrygT3POLGOL+XIm/8TLJSwJcVkS8rImZ+Tl0uxtJ5To21+fqV/32z439/a2MZaG36/MjPtf3Exc+1mX+vdfDJfGe3KX+7wc+Lf2fa8y3Myzfi97uxbvzdbX627BJksa3098Yz65Qm8tmXupzw76fj++D8Pp75e95VThZFLPHvonOsugVZbCv9e/AS321nn32pywn0/TxcP/jvYQxkjkN8TRumNrQ4Vj2CLDahLaBTcmxR6nIyEI5+Hu4bn8rn5+HWpvfvHKtJgiw2oS2gU5rIZ1/qcpL6HEHy88En+zkCM0ixpD5HENApTeSzL3U54c80cG/Gz6FjdT8KhimCLKn7UQGd0kQ++1KXE+j7ealnvG0yx6HueQdaHKupgiw2oS2gU5rIZ1/qcgJ9Pw/PgFsT33aZ48DP2VgXbWhxrIwgi01oC+iUJvLZl7qcbEe+bx/q2xLf0zPHoSAdrIs2tDhWvYIsNqEtoFOayGdf6nICfT9vh1DfnviekTkOBelgXbShxbGygiw2oS2gU5rIZ1/qcgJ9P2/HUN+B+AYzx6EgHayL9iDlAQx9giw2oS2gU5rIZ1/qcsJ/m3Uo1HckvjJzHArSwbpoQ4tjNU2QxSa0BXRKE/nsS11OoO/nrQr1IeLbKXMcCtLBumhDi2M1XZDFJrQFdEoT+exLXU6g7+ftHOqriO+ZmeNQkA7WRRtaHKsZgiw2oS2gU5rIZ1/qcgJ9P2+XUN+Z+J6VOQ4F6WBdtKHFsZopyGIT2gI6pYl89qUuJ9D383YN9V2I79mZ41CQDtZFG1ocqy0EWWxCW0CnNJHPvtTlBPp+3m6hvivxPSdzHArSwbpoQ4tjtaUgi01oC+iUJvLZl7qcQN/P2z3UdyO+52aOQ0E6WBdtaHGsZgmy2IS2gE5pIp99qcsJ9P28PUJ9d+IbzhyHgnSw7h6RBsdqviCLTWgL6JQcW5S6nDDLXnlZdvIse46CZS9i2TsvS/U3YNqZ1/Rr7EP88BXslsbb5Ns+eTmqfb53a2RM0WY+ZZ3YrIb69hhjFr4e7inHspNNaAvolCby2Ze6ax3nZN9Q35v4npeXr8rJvhEL2tDiWLUFWWxCW0CnNJHPvtTlhFn2z8qyqvoe2H6jYOH/r3FAVpbO+9aBpAUu6Fga531wYF6Oak8eEPmPNvMpq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqa35WQ337jjGLJYb9xFhWVX/TKNYW8Lk0kc++1H1PhHNyUKgfQHwH5+WrcnJQxII2tDhWbUEWm9AW0ClN5LMvdTlhlkOzsnT+Vt0ho2A5lFgOy8rS+R7R4aQFLuhYGud9cHhejmpPHhb5jzbzKauyKquyKquyKquyKquyKquyKquyKquyKquyKquyjhdWQ30HjTELfxZ/iBhL539LxNoCPpcm8tmXus/ZOSdHhPphxPf8vHxVTo6IWNCGFseqLchiE9oCOqWJfPalLifMclRelupvmxw5CpajiOXovCyDfo1jSAtc0LE0zvvgmLwc1Z48OvIfbeZT1onNaqjviDFm4WvXkXIs1d8hibUFdEoT+exL3XWJc3JsqB9NfC/Iy1fl5NiIBW1ocazagiw2oS2gU5rIZ1/qcsIsx2dl6fy/2uNGwXI8sZyQlaXzvnUiaYELOpbGeR+cmJej2pMnRP6jzXzKqqzKqqzKqqzKqqzKOrFZDfUdO8Ys/CxznBjLUPX5a6wt4HNpIp99qXtO4ZycFOonEN8L8/JVOTkpYkEbWhyrtiCLTWgL6JQm8tmXupwwyylZWTrPsSePguUUYjk1K0vnOfY00jo5HKFjaZz3wWl5Oao9eWrkP9rMp6zKqqzKqqzKqqzKqqwTm9VQ30ljzMLPMieLsXSeY2NtAZ9LE/nsS91zCudkdaifSnxr8vJVOVkdsaANLY5VW5DFJrQFdEoT+exLXU6Y5QwBltNHwXIGsZyZl6V6jj2LtMAFHUvjvA/OystR7ckzI//RZr7xwmqob/UYs/A5drocS2kT2hI6JvLZl7rzh3NydqifSXwvystX5eTsiAVtaHGs2oIsNqEtoFOayGdf6nLCLOcKsJwzCpZzieW8vCzV9XUtaYELOpbGeR+szctR7cnzIv/RZr7xwmqo7+wxZuFz7Bw5lur6GmtL6JjIZ1/qzh/Oyfmhfh7xvTgvX5WT8yMWtKHFsWoLstiEtoBOaSKffanLCfT9vHWhfj7xXZA5DgXpYF20ocWxaguy2IS2gE5pIp99qcsJ9P289aG+jvg2ZI5DQTpYF21ocayMIItNaAvolCby2Ze6nGwg3y8M9fXEd1HmOBSkg3XRhhbHqleQxSa0BXRKE/nsS11OoO/nXRzqFxLfJZnjUJAO1kUbWhwrK8hiE9oCOqWJfPalLifQ9/MuDfWLie+yzHEoSAfron0Z5QEMfYIsNqEtoFOayGdf6nICfT/v8lC/lPhekjkOBelgXbShxbGaJshiE9oCOqWJfPalLifQ9/OuCPXLie+lmeNQkA7WRRtaHKvpgiw2oS2gU5rIZ1/qcgJ9P+/KUL+C+F6WOQ4F6WBdtKHFsZohyGIT2gI6JccWpS4n0Pfzrgr1K4nv5ZnjUJAO1kUbWhyrtiCLTWgL6JQm8tmXupxA38+7OtSvIr5XZI5DQTpYF21ocazagiw2oS2gU5rIZ1/qcgJ9P++aUL+a+F6ZOQ4F6WBdtKHFsWoLstiEtoBOaSKffanLCfT9vGtD/Rriuy5zHArSwbpoQ4tj1RZksQltAZ3SRD77UpcT6Pt514f6tcR3Q+Y4FKSDddGGFseqLchiE9oCOqWJfPalLifMcmNeluq74DeFta4nnZszx7YgHayLNrQ4/jcKstiEtoBOaSKffanLM/T9vFtC/Sbie1XmOBSkg3XRhhbH6kZBFpvQFtApTeSzL3U5gb6fd2uo30J8r84ch4J0sC7a0OJY3SjIYhPaAjqliXz2pS4n0Pfzbgv1W4nv9sxxKEgH66INLY5VW5DFJrQFdEoT+exLXU6g7+fdEeq3Ed+dmeNQkA7WRRtaHKu2IItNaAvolCby2Ze6nEDfz7sr1O8gvtdkjkNBOlgXbWhxrNqCLDahLaBTmshnX+pyAn0/7+5Qv4v47skch4J0sC7a0OJYtQVZbEJbQKc0kc++1OUE+n7evaF+N/G9NnMcCtLBumhDi2PVFmSxCW0BndJEPvtSlxPo+3n3hfq9xPe6zHEoSAfrog0tjlVbkMUmtAV0ShP57EtdTqDv590f6vcR3wOZ41CQDtZFG1ocq7Ygi01oC+iUHFuUupw8EI5+3utD/X7i+5vMcShIB+uiDS2OVVuQxSa0BXRKE/nsS11OoO/nvSHUX098f5s5DgXpYF20ocWxaguy2IS2gE5pIp99qcsJ9P28N4b6G4jv7zLHoSAdrIs2tDhWbUEWm9AW0ClN5LMvdTmBvp/3plB/I/G9OXMcCtLBumhDi2PVFmSxCW0BndJEPvtSlxPo+3lvCfU3Ed/fZ45DQTpYF21ocazagiw2oS2gU5rIZ1/qcgJ9P++tof4W4ntb5jgUpIN10YYWx6otyGIT2gI6pYl89qUuJ9D3894e6m8lvndkjkNBOlgXbWhxrNqCLDahLaBTmshnX+pyAn0/752h/nbi+4fMcShIB+uiDS2OVVuQxSa0BXRKE/nsS11OoO/nvSvU30l8784ch4J0sC7a0OJYtQVZbEJbQKc0kc++1OWEWd6bl6X63w7vGQXLe4nlfXlZqt8ZfD9pgQs6lsZ5H7w/L0e1J98X+Y828ynrxGY11PeuMWbha9d75Fiq/+0QawvolCby2Ze66xLn5AOh/j7i+2BevionH4hY0IYWx6otyGIT2gI6pYl89qUuJ8zy4awsZfU9qA+NguXDxPJgVpbO+9ZHSAtc0LE0zvvgI3k5qj35YOQ/2synrMqqrMqqrMqqrMqqrMqqrMqqrMqqrMqqrMqqrMo6XlgN9X1gjFn4s/gPibGU1d90j7UFfC5N5LMvdZ+zc04+GuoPEt8/5uWrcvLRiAVtaHGs2oIsNqEtoFOayGdf6nLCLB/PytL5OczHRsHycWJ5KCtL5+cwnyAtcEHH0jjvg0/k5aj25EOR/2gzn7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iq63hhNdT30TFm4c/iPybG0vk5TKwt4HNpIp99KaL2MNU5J58M9YeI75/y8lU5+WTEgja0OFZtQRab0BbQKU3ksy91OWGWT2dlGap+DvOpUbB8mlgezsrS+TnMZ0gLXNCxNM774DN5Oao9+XDkP9rMp6zKqqzKqqzKqqzKqqwTm9VQ3yfHmIWfZT4lxjJUPcfG2gI+lyby2Ze65xTOyWdD/WHi++e8fFVOPhuxoA0tjlVbkMUmtAV0ShP57EtdTpjl81lZOs+xnxsFy+eJ5QtZWTrPsV8kLXBBx9I474Mv5uWo9uQXIv/RZj5lVVZlVVZlVVZlVVZlndishvo+O8Ys/CzzOTGWznNsrC3gc2kin32pe07hnHwp1L9AfP+Sl6/KyZciFrShxbFqC7LYhLaATmkin32pywmzfCUrS+c59sujYPkKsXw1K0vnOfZrpAUu6Fga533wtbwc1Z78auQ/2synrMqqrMqqrMqqrMqqrBOb1VDfl8aYhZ9lvizG0nmOjbUFfC5N5LMvdc8pnJOvh/pXie9f8/JVOfl6xII2tDhWbUEWm9AW0ClN5LMvdTlhlm/mZan+P8w3RsHyTWL5Vl6W6jn226QFLuhYGud98O28HNWe/FbkP9rMp6wTm9VQ39fHmIWvXd+QY6n+P0ysLaBTmshnX+quS5yT74T6t4jv3/LyVTn5TsSCNrQ4Vm1BFpvQFtApTeSzL3U5YZbv5WWp3re+OwqW7xHL9/OyVO9bj5AWuKBjaZz3wSN5Oao9+f3If7QfoX5lndishvq+M8YsfO36rhxL9b4VawvolBxblLrr0iPh6Of9INS/T3z/npevyskPIha0ocWxaguy2IS2gE5pIp99qcsJs/xIgOWHo2D5EbH8OC9L9b71E9ICF3QsjfM++ElejmpP/jjyH23mGy+shvp+MMYsfI79UI6ltAltCR0T+exL3fnDOflpqP+Y+P4jL1+Vk59GLGhDi2PVFmSxCW0BndJEPvtSlxPo+3k/C/WfEt9/Zo5DQTpYF21ocazagiw2oS2gU5rIZ1/qcgJ9P+/nof4z4vuvzHEoSAfrog0tjlVbkMUmtAV0ShP57EtdTqDv5/0i1H9OfP+dOQ4F6WBdtKHFsWoLstiEtoBOaSKffanLCfT9vF+G+i+I738yx6EgHayLNrQ4Vm1BFpvQFtApTeSzL3U5gb6f96tQ/yXx/W/mOBSkg3XRhhbHqi3IYhPaAjqliXz2pS4n0Pfzfh3qvyK+/8sch4J0sC7a0OJYtQVZbEJbQKc0kc++1OUE+n7eb0L918T328xxKEgH66INLY5VW5DFJrQnU18uHb/m7zKvaYgZpS7PvyP/fp+XpfrM4FHSAhd0LI3PJo5HM8ekIE2si/ajxILSJReTobpc/D7BMqNBLH0NYjENYpncIJbuBrHMbxDL3AaxTGsQS2+DWKY0iKWnQSzzGsQyp0EssxvEMr1BLLZBLFMbxDKpQSzFGLOY1qbPBYbGf0N9uEf+LfV1JdbDvQde7+P9lr5N15H2nXWGqQ2tXmJ4tAEskxrEMrVBLLZBLNMbxDK7QSxzGsQyr0EsPQ1imdIglt4GsUxrEMvcBrHMbxBLd4NYJjeIxTSIpa9BLDMaxNIlz7LKr/nHzP75vfWH1shS90zxR/LvT3lZBv2af868pl/jMeKHr2C3NP5n8u2xzHEuSBProv0YsaB0ycW59pnxTwmWGQ1i6WsQi2kQy+QGsXQ3iGV+g1jmNohlWoNYehvEMqVBLD0NYpnXIJY5DWKZ3iAW2yCWqQ1imdQglmKMWZ7oZwEY58/4cV/6B+rrSqyH93u8Pv5ZwGNPke+sM0xtaPHPAh5rAMukBrFMbRCLbRDL9AaxzGkQy7wGsfQ0iGVKg1h6G8QyrUEscxvEMr9BLN0NYpncIBbTIJa+BrHMaBBLV4LlL3lZduL75BYxcRmm+l+IBS/MxFJ9Vl5kXtOv0UUO/Sly0tI4tCdTXyaOznNMEcU0tJlPWSc2a37dVdXf749P6rpznFm6Bc7HnmJTkG7KRU8iFz0CueiOcoE28ymrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiprftb8umX1/QjWpRCMYIlj5Vkm5Y1B9f2IySQOrkmUi8mJXEwWyMWkKBdoM5+yKquyKquyKquyKquyKquyKquyKquyKquyKquyKut4YRXQrX7HlnUrP0c2R3y+zCxT8rJUny9PJXFwTaFcTE3kYqpALqZEuUCb+ZR1YrPm1x2qft4zZRTnI7MYgfOxl8TBZSgXvYlc9ArkwkS5QJv5lFVZlVVZlVVZlVVZlXVis+bX7dyfs27l58jmiPtzZrF5Y1Ddn/eR+OM5oFz0JXLRJ5ALG+UCbeZTVmVVVmVVVmVVVmVV1onNKqBbmki38nNkc8T9ObNMy8tS3Z9PJ3FwTaNcTE/kYrpALqZFuUCb+cYLq4ButW+mjWLfMMsMgX0zk8TBNYNyMTORi5kCuZgR5QJt5hsvrIb6ulob+zDeTX1bhL4e6tsy9E2ivlnkE/pmh74p1Dcn9E2lvrmhbz71zQt9/P9e5sMv8mMBmKnvaeCjvq3AQn0LUae+RdH7hO9bHF0DfF9/lEvfN0B1HJeEvl7qW0p7An3L8J5AfcuhS30rcA2gvpXYa9S3dYIPuZ5Bfcg17w3kegvqQ663pD7kehb1IdezqQ+5nkN9iNFc6kOM5lEfYjSf+hCjBdSHGD2N+hCjrXjfh76F1Dcz9C2ivi1C32Lq2zL09VPfrNDHucf/Tl9CffgfKkupD/8PYhn14f+bLKc+nBcreN+HvpW870Pf1nTe+ZhuFfoxp5deu7C1cf7iqM/ntz/Uh8NxcPNKdX2CDtZFu5/4FoX6YmIZyMxiSBOl7r1ugFiW5GWp3uuWkha4oGNpfDZxLM0ck4I0sS7azLckwYo97vO3OHqdZ13+FLBiry8X1l0W6S6KdKvrfGtkqdtby4h3RV7eQa+7ktYfJo1F1L+1QJxWku8FaaC/m+p34sJOr/MF1yow+/21PPE6ri+N5lgaXy7s8wriGKY2tPz76w19Gxky788q38sjBrQXUf+KRLyWU7wwjnPZ0PgCimHm/TpUx8/5BMMSQRab0OY4LGxAHMCwlPrwOsHrSpJvTiJW6MNr/f7fn7gmZebie1iUumsv9P19Ki5BF6xfu+6UM9Ycs+6s9Wv4saMnWq+L1umise7odVNamzJkc3gWiXUF8Z7g2OQg7p3DTXb14Verc9Psb5L9TbG/CfY3vf4mdxYx3hSO/qbDJ9LftPqbVH9T6k9Af3H2b7p+E/qLi79Y+BuCgVbnxPSb0m9Cn3y/KfzF3l8It3G2rbPtnG3v7OnOdnD2DGc7+pg4G3JWOlvlbCdnOzt7prNdnD3L2a7Onu1sN2fPcba7s+c62yPEdk9neznb21nb2T7O9nX2PGf7tTqb8ABnBzo7yNnBzg5xdqizw5wd7uwIZ893dqSzo5wd7ewYZ8c6e4Gz45wd7+wEZyc6O8nZC52d7OwUZ6c6O83ZamdrnJ3u7AxnZzo7y9nZzl7k7Bxn5zo7z9laZ+c7e7Gzdc4ucLbe2QZnFzq7yNnFzi5xdqmzy5xd7uwlzq5w9lJnVzp7mbOrnL3c2dXOXuHsGmevdHats+ucXe/sBmc3tjq5vtnZLc5e5exWZ692dpuz253d4exOZ3c5e42zu53d4+xeZ691dp+z1zm739kDrU1PFl8eCkdctE9Zv37NueevH1i/duDcDeesP+v8cy4ZuOis9WcOrL1wzbrTz1l7EU++rtiMyTeHxsJNJ5+yevUTz7s7NHBW7H/e6jUXD6zdsH5g7ekDp67dcN7qC/4fG7XW3sY5AgA=",
+      "verificationKey": "0000000200000800000000740000000f00000003515f3109623eb3c25aa5b16a1a79fd558bac7a7ce62c4560a8c537c77ce80dd339128d1d37b6582ee9e6df9567efb64313471dfa18f520f9ce53161b50dbf7731bc5f900000003515f322bc4cce83a486a92c92fd59bd84e0f92595baa639fc2ed86b00ffa0dfded2a092a669a3bdb7a273a015eda494457cc7ed5236f26cee330c290d45a33b9daa94800000003515f332729426c008c085a81bd34d8ef12dd31e80130339ef99d50013a89e4558eee6d0fa4ffe2ee7b7b62eb92608b2251ac31396a718f9b34978888789042b790a30100000003515f342be6b6824a913eb7a57b03cb1ee7bfb4de02f2f65fe8a4e97baa7766ddb353a82a8a25c49dc63778cd9fe96173f12a2bc77f3682f4c4448f98f1df82c75234a100000003515f351f85760d6ab567465aadc2f180af9eae3800e6958fec96aef53fd8a7b195d7c000c6267a0dd5cfc22b3fe804f53e266069c0e36f51885baec1e7e67650c62e170000000c515f41524954484d455449430d9d0f8ece2aa12012fa21e6e5c859e97bd5704e5c122064a66051294bc5e04213f61f54a0ebdf6fee4d4a6ecf693478191de0c2899bcd8e86a636c8d3eff43400000003515f43224a99d02c86336737c8dd5b746c40d2be6aead8393889a76a18d664029096e90f7fe81adcc92a74350eada9622ac453f49ebac24a066a1f83b394df54dfa0130000000c515f46495845445f42415345060e8a013ed289c2f9fd7473b04f6594b138ddb4b4cf6b901622a14088f04b8d2c83ff74fce56e3d5573b99c7b26d85d5046ce0c6559506acb7a675e7713eb3a00000007515f4c4f4749430721a91cb8da4b917e054f72147e1760cfe0ef3d45090ac0f4961d84ec1996961a25e787b26bd8b50b1a99450f77a424a83513c2b33af268cd253b0587ff50c700000003515f4d05dbd8623b8652511e1eb38d38887a69eceb082f807514f09e127237c5213b401b9325b48c6c225968002318095f89d0ef9cf629b2b7f0172e03bc39aacf6ed800000007515f52414e474504b57a3805e41df328f5ca9aefa40fad5917391543b7b65c6476e60b8f72e9ad07c92f3b3e11c8feae96dedc4b14a6226ef3201244f37cfc1ee5b96781f48d2b000000075349474d415f3125001d1954a18571eaa007144c5a567bb0d2be4def08a8be918b8c05e3b27d312c59ed41e09e144eab5de77ca89a2fd783be702a47c951d3112e3de02ce6e47c000000075349474d415f3223994e6a23618e60fa01c449a7ab88378709197e186d48d604bfb6931ffb15ad11c5ec7a0700570f80088fd5198ab5d5c227f2ad2a455a6edeec024156bb7beb000000075349474d415f3300cda5845f23468a13275d18bddae27c6bb189cf9aa95b6a03a0cb6688c7e8d829639b45cf8607c525cc400b55ebf90205f2f378626dc3406cc59b2d1b474fba000000075349474d415f342d299e7928496ea2d37f10b43afd6a80c90a33b483090d18069ffa275eedb2fc2f82121e8de43dc036d99b478b6227ceef34248939987a19011f065d8b5cef5c0000000010000000000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f"
+    },
+    {
+      "name": "add_to_tally_public",
+      "functionType": "open",
+      "isInternal": true,
+      "parameters": [
+        {
+          "name": "voteId",
+          "type": {
+            "kind": "field"
+          },
+          "visibility": "private"
+        }
+      ],
+      "returnTypes": [
+        {
+          "kind": "struct",
+          "path": "aztec::abi::PublicCircuitPublicInputs",
+          "fields": [
+            {
+              "name": "call_context",
+              "type": {
+                "kind": "struct",
+                "path": "aztec::abi::CallContext",
+                "fields": [
+                  {
+                    "name": "msg_sender",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "storage_contract_address",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "portal_contract_address",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "function_selector",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "is_delegate_call",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  },
+                  {
+                    "name": "is_static_call",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  },
+                  {
+                    "name": "is_contract_deployment",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "args_hash",
+              "type": {
+                "kind": "field"
+              }
+            },
+            {
+              "name": "return_values",
+              "type": {
+                "kind": "array",
+                "length": 4,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "contract_storage_update_requests",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "struct",
+                  "path": "aztec::abi::ContractStorageUpdateRequest",
+                  "fields": [
+                    {
+                      "name": "storage_slot",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "old_value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "new_value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "contract_storage_read",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "struct",
+                  "path": "aztec::abi::ContractStorageRead",
+                  "fields": [
+                    {
+                      "name": "storage_slot",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "public_call_stack",
+              "type": {
+                "kind": "array",
+                "length": 4,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_commitments",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_nullifiers",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_l2_to_l1_msgs",
+              "type": {
+                "kind": "array",
+                "length": 2,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "unencrypted_logs_hash",
+              "type": {
+                "kind": "array",
+                "length": 2,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "unencrypted_log_preimages_length",
+              "type": {
+                "kind": "field"
+              }
+            },
+            {
+              "name": "block_data",
+              "type": {
+                "kind": "struct",
+                "path": "aztec::abi::HistoricBlockData",
+                "fields": [
+                  {
+                    "name": "note_hash_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "nullifier_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "contract_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "l1_to_l2_messages_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "blocks_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "public_data_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "global_variables_hash",
+                    "type": {
+                      "kind": "field"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "prover_address",
+              "type": {
+                "kind": "field"
+              }
+            }
+          ]
+        }
+      ],
+      "bytecode": "H4sIAAAAAAAA/+2dCZhdRZXH+3Z3kq5UdwIk6Wyd5GVlD903Yd8aHsgm+yabEEiASEJD0uwiICIiiICICIiMo446juMoOm7jvm/jwriNC+PCOOqo4yijjspU3Vd/8+/KzR36o459++tT33fyanm3/r9zTt373l1e+pG2trasrVU6nM1o27pgfDC89j+zMpClm6tfkrN9nHB2jBPOznHCOWmccE4eJ5xTxgln1zjhNOOEc+o44bTjhLN7nHD2jBPOaeOEc/o44dxunHBuP044dxgnnDMScs4lzpnhdVZ47Q2vs8PrnPCKbeaF1/nBx87Q7nO2wNlCZ4vCGALScLbY2RJnS50tc7bc2QpnOzrbydnOznZxtquz3Zzt7mylsz3CPAPOcmernK12tqezvZzt7WwfZ/s628/Z/s4OcHags4OcHRzidoizQ501nR3m7HBnz3J2hLMjnR3l7Ghnxzh7trNjnR3n7PjgSyP4coKzE52d5OxkZ6c4O9XZac5Od/YcZ2c4O9PZWc7OdnaOs+c6O9fZec7WODvf2QXO1jpb5+xCZxc5u9jZemfPc3aJsw3ONjq71NlQFPPLnF3ubJOzzWFsuzA27OwKZ1c6u8rZ1c6ucXats+ucPd/Z9c5e4OwGZzc6u8nZC53dHM31Ime3OHuxs1udvcTZbc5e6ux2Z3c4e5mzO5293Nldzu52do+zV4S52sNc9zp7ZdR3n7NXhfr94fXV4fWB8PpgeH0ovL4mvD4cXl8bXh9xtnNPq+6/w2F979C2pQ/n39tTH8a3oz6MT6c+jE+jPoz3UB/Gu6kP45b6MD6V+ngcrxjvoj6MT6E+jE+mPoxPoj6Md1IfxjuoD+Pt1IfxjPow3hbp+zIYXvufYZnclvy42u997ic/2kr85Ws3sb+dJXGZVBI/zgfGOW8Y5/zyOF4xzusF47xuMM7rD+O8TjHO6xnjvO4xzvsHxnk/wjjvbxifQX0Yn0l9GJ9FfRjvpT6Mz6Y+jM+hPozPpT6M43PM+zWZ3jMYXvufWclZCyWL2oNUh75nmS/AMm8ULPOJpS8tS3FevSDMNYd0FibWyUgH86INLUsMfYIstkRbQsdEPvtSlWdmWZSWpTikNkgLXIso9hifSRyNxDHJSBPzog0tQ33zxpjFEsMC6sP7Fsrx5Sbi86Vq/TSIZUlSloF+z7J4FCxLiGVpUpbW945lief0cywnfvgKdkvjy8i35Wk5ijW5tG1kTNFmPmVVVmVVVmVVVmVVVmWd2KyG+haNMQufHy0WYxnotyXaEucbfI0Lc/vriA+S5oLEvvk4x+eWYIBWB71nevcWLlx7n0rji8RY8wvSXyMb6PfudBH//Mh3XB/ia419lJs3kL91uZbI1/34Wlvi64vFPjovYuH7hL7wtbZ2QRZbol2na6p+O6wbvtaUdh9p5aQvYkGbryuBoUOQxZZoC+jkJvLZl6qcQN9vh/2erwMnviY6wMdYzBsfLzlWnYIstq38WJ1YJzeRz75U5QT6frtGqPPn0uLEceB7+5gXbWhxrCYJstgSbQGdnGOLUpUT6PvtcJ21QXyJv/8UOVkSsaDN34WZQYrFlmgL6OQm8tmXqpxA32+HcwG+Bi7xPXxZxII2fw8HwxRBFluiLaCTm8hnX6pywudGK0Kdz9N2TByHjHQwL9rQ4lh1CbLYEm0BndxEPvtSlRPo++12CvUVxLdz4jhkpIN50YYWx8oIstgSbQGd3EQ++1KVk53J911CfSfi2zVxHDLSwbxoQ4tjNVWQxZZoC+jkJvLZl6qcQN9vt1uo70J8uyeOQ0Y6mBdtaHGsrCCLLdEW0MlN5LMvVTmBvt9uZajvRnx7JI5DRjqYF+09KA9g6BZksSXaAjq5iXz2pSon0Pfb4bnBlcQ3kDgO/Bw15kUbWhyrHkEWW6ItoJObyGdfqnICfb9dDgbiW5U4DhnpYF60ocWxmibIYku0BXRyE/nsS1VOoO+3Wx3qOfHtmTgOGelgXrShxbGaLshiS7QFdHIT+exLVU6g77fbK9RXE9/eieOQkQ7mRRtaHKvtBFlsibaATm4in32pygn0/Xb7hPpexLdv4jhkpIN50YYWx2p7QRZboi2gk5vIZ1+qcgJ9v91+ob4P8e2fOA4Z6WBetKHFsdpBkMWWaAvo5Cby2ZeqnEDfb3dAqO9HfAcmjkNGOpgXbWhxrGYIstgSbQGd3EQ++1KVE+j77Q4K9QOI7+DEcchIB/OiDS2OVa8giy3RFtDJTeSzL1U5YZZD0rKsNpHW/8dyCLEcmpaleCa7mXhOP8dhJb6A3dJ4k3w7LC1Hsc4PjTjQZj5lndishvoOGmMWPh4OyrGstiXaAjq5iXz2pepYxzk5PNQPJb5npeUrcnJ4xII2tDhWTUEWW6ItoJObyGdfqnLCLEcmZVlVPKN3xChYjiSWo5KytD63jiYtcEHH0jivg6PTchRr8qjIf7SZT1mVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVmVVVnTsxrqO3yMWfhZkiPEWFYV/5dTrC3gc24in32pek6Ec3JMqB9FfM9Oy1fk5JiIBW1ocayagiy2RFtAJzeRz75U5YRZjkvKkhfPER07CpbjiOX4pCyt54hOIC1wQcfSOK+DE9JyFGvy+Mh/tJlPWZVVWZVVWZVVWZVVWZVVWZVVWZVVWZVVWZVVWZV1vLAa6jtmjFn4WvyxYix5cR8m1hbwOTeRz75UXWfnnJwY6scT30lp+YqcnBixoA0tjlVTkMWWaAvo5Cby2ZeqnDDLKWlZiv/b5ORRsJxCLKemZen3c5xGWuCCjqVxXgenpeUo1uSpkf9oM5+yTmxWQ30njjELH7tOlmMp/h+SWFtAJzeRz75UHZc4J6eH+qnE95y0fEVOTo9Y0IYWx6opyGJLtAV0chP57EtVTpjlzKQsrb+TfMYoWM4klrOSsrQ+t84mLXBBx9I4r4Oz03IUa/KsyH+0mU9ZlVVZlVVZlVVZlVVZJzarob7Tx5iFz2XOEGNp/U3jWFvA59xEPvtSdZ7COTkn1M8ivuem5Styck7Egja0OFZNQRZboi2gk5vIZ1+qcsIs5yVlaZ3HnjsKlvOIZU1SltZ57PmkBS7oWBrndXB+Wo5iTa6J/Eeb+ZRVWZVVWZVVWZVVWZV1YrMa6jtnjFn4XOZcMZbWeWysLeBzbiKffcmi9iDVOScXhPoa4lublq/IyQURC9rQ4lg1BVlsibaATm4in32pygmzXCjAsm4ULBcSy0VpWYrz2ItJC1zQsTTO6+DitBzFmrwo8h9t5hsvrIb6LhhjFt7H1smx5LZEW0LHRD77UrX/cE7Wh/pFxPe8tHxFTtZHLGhDi2PVFGSxJdoCOrmJfPalKifMskGA5ZJRsGwglo1pWYrj66WkBS7oWBrndXBpWo5iTW6M/Eeb+cYLq6G+9WPMwvvYJXIsxfE11pbQMZHPvlTtP5yToVDfSHyXpeUrcjIUsaANLY5VU5DFlmgL6OQm8tmXqpxA3293eagPEd+mxHHISAfzog0tjlVTkMWWaAvo5Cby2ZeqnEDfb7c51C8nvuHEcchIB/OiDS2OlRFksSXaAjq5iXz2pSonw+T7FaG+mfiuTByHjHQwL9rQ4lhNFWSxJdoCOrmJfPalKifQ99tdFepXEN/VieOQkQ7mRRtaHCsryGJLtAV0chP57EtVTqDvt7sm1K8ivmsTxyEjHcyL9rWUBzB0C7LYEm0BndxEPvtSlRPo++2uC/VriO/5ieOQkQ7mRRtaHKseQRZboi2gk5vIZ1+qcgJ9v931oX4d8b0gcRwy0sG8aEOLYzVNkMWWaAvo5Cby2ZeqnEDfb3dDqF9PfDcmjkNGOpgXbWhxrKYLstgSbQGdnGOLUpWTG8Or3+6mUL+B+F6YOA4Z6WBetKHFsWoKstgSbQGd3EQ++1KVE+j77W4O9ZuI70WJ45CRDuZFG1ocq6Ygiy3RFtDJTeSzL1U5gb7f7pZQv5n4Xpw4DhnpYF60ocWxagqy2BJtAZ3cRD77UpUT6Pvtbg31W4jvJYnjkJEO5kUbWhyrpiCLLdEW0MlN5LMvVTmBvt/utlC/lfhemjgOGelgXrShxbFqCrLYEm0BndxEPvtSlRNmuT0tS/Es+B1hrttI52WJY5uRDuZFG1oc/9sFWWyJtoBObiKffanKM/T9dneG+h3E9/LEcchIB/OiDS2O1e2CLLZEW0AnN5HPvlTlBPp+u7tC/U7iuztxHDLSwbxoQ4tjdbsgiy3RFtDJTeSzL1U5gb7f7p5Qv4v4XpE4DhnpYF60ocWxagqy2BJtAZ3cRD77UpUT6Pvt7g31e4jvlYnjkJEO5kUbWhyrpiCLLdEW0MlN5LMvVTmBvt/uvlC/l/helTgOGelgXrShxbFqCrLYEm0BndxEPvtSlRPo++3uD/X7iO/VieOQkQ7mRRtaHKumIIst0RbQyU3ksy9VOYG+3+6BUL+f+B5MHIeMdDAv2tDiWDUFWWyJtoBObiKffanKCfT9dg+F+gPE95rEcchIB/OiDS2OVVOQxZZoC+jkJvLZl6qcQN9v93CoP0R8r00ch4x0MC/a0OJYNQVZbIm2gE5uIp99qcoJ9P12j4T6w8T3V4njkJEO5kUbWhyrpiCLLdEW0Mk5tihVOYG+3+51of4I8f114jhkpIN50YYWx6opyGJLtAV0chP57EtVTqDvt3t9qL+O+N6QOA4Z6WBetKHFsWoKstgSbQGd3EQ++1KVE+j77d4Y6q8nvr9JHIeMdDAv2tDiWDUFWWyJtoBObiKffanKCfT9dm8K9TcS35sTxyEjHcyLNrQ4Vk1BFluiLaCTm8hnX6pyAn2/3VtC/U3E97eJ45CRDuZFG1ocq6Ygiy3RFtDJTeSzL1U5gb7f7q2h/hbi+7vEcchIB/OiDS2OVVOQxZZoC+jkJvLZl6qcQN9v97ZQfyvx/X3iOGSkg3nRhhbHqinIYku0BXRyE/nsS1VOoO+3e3uov434/iFxHDLSwbxoQ4tj1RRksSXaAjq5iXz2pSonzPLOtCzF33Z4xyhY3kksj6ZlKX4z+C7SAhd0LI3zOnhXWo5iTT4a+Y828ynrxGY11Pf2MWbhY9c75FiKv+0Qawvo5Cby2Zeq4xLn5N2h/ijx/WNaviIn745Y0IYWx6opyGJLtAV0chP57EtVTpjlvUlZ8uI5qPeMguW9xPK+pCytz633kxa4oGNpnNfB+9NyFGvyfZH/aDOfsiqrsiqrsiqrsiqrsiqrso6qKKuyKquyKquyKquyKusYshrqe/cYs/C1+PeIseTF/+keawv4nJvIZ1+qrrNzTj4Q6u8jvn9Ky1fk5AMRC9rQ4lg1BVlsibaATm4in32pygmzfCgpS+s+zAdHwfIhYvlwUpbWfZiPkBa4oGNpnNfBR9JyFGvyw5H/aDOfsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsiqrsirreGE11PeBMWbha/EfFGNp3YeJtQV8zjm2KFnUHqQ65+Sjof5h4vtYWr4iJx+NWNCGFseqKchiS7QFdHIT+exLVU6Y5RNJWQaK+zAfHwXLJ4jlk0lZWvdhPkVa4IKOpXFeB59Ky1GsyU9G/qPNfMqqrMqqrMqqrMqqrMo6sVkN9X10jFn4XObjYiwDxXlsrC3gc24in32pOk/hnHw61D9JfJ9Jy1fk5NMRC9rQ4lg1BVlsibaATm4in32pygmzfC4pS+s89rOjYPkcsXw+KUvrPPYLpAUu6Fga53XwhbQcxZr8fOQ/2synrMqqrMqqrMqqrMqqrBOb1VDfp8eYhc9lPivG0jqPjbUFfM5N5LMvVecpnJMvhvrnie+f0/IVOflixII2tDhWTUEWW6ItoJObyGdfqnLCLF9OytI6j/3SKFi+TCxfScrSOo/9KmmBCzqWxnkdfDUtR7EmvxL5jzbzKauyKquyKquyKquyKuvEZjXU98UxZuFzmS+JsbTOY2NtAZ9zE/nsS9V5CufksVD/CvH9S1q+IiePRSxoQ4tj1RRksSXaAjq5iXz2pSonzPL1tCzF34f52ihYvk4s30jLUpzHfpO0wAUdS+O8Dr6ZlqNYk9+I/Eeb+ZR1YrMa6ntsjFn42PU1OZbi78PE2gI6uYl89qXquMQ5+Vaof4P4/jUtX5GTb0UsaEOLY9UUZLEl2gI6uYl89qUqJ8zynbQsxefWt0fB8h1i+W5aluJz63ukBS7oWBrndfC9tBzFmvxu5D/azKesE5vVUN+3xpiFj13flmMpPrdibQGd3EQ++1J1XOKcPB7q3yW+f0vLV+Tk8YgFbWhxrJqCLLZEW0An59iiVOWEWX4gwPL9UbD8gFh+mJal+Nz6EWmBCzqWxnkd/CgtR7Emfxj5jzbzjRdWQ32PjzEL72Pfl2PJbYm2hI6JfPalav/hnDwR6j8kvn9Py1fk5ImIBW1ocayagiy2RFtAJzeRz75U5QT6frsfh/oTxPcfieOQkQ7mRRtaHKumIIst0RbQyU3ksy9VOYG+3+4nof5j4vtp4jhkpIN50YYWx6opyGJLtAV0chP57EtVTqDvt/tZqP+E+P4zcRwy0sG8aEOLY9UUZLEl2gI6uYl89qUqJ9D32/081H9GfL9IHIeMdDAv2tDiWDUFWWyJtoBObiKffanKCfT9dr8M9Z8T338ljkNGOpgXbWhxrJqCLLZEW0AnN5HPvlTlBPp+u1+F+i+J778TxyEjHcyLNrQ4Vk1BFluiLaCTm8hnX6pyAn2/3a9D/VfE95vEcchIB/OiDS2OVVOQxZZoT6a+RDqrLPnbLhzbtii2bSWxRZleI5buGrGYGrFMrhFLR41YZteIpadGLFNrxDKlRiydNWLprRHLrBqxzKwRy7QasdgasXTViGVSjViyMWYxbVt/zzc0/mvqa4+29XHs69ky/mToby+Z58m2rd/Hvv+PgO+sM0htaE0lhidrwDKpRixdNWKxNWKZViOWmTVimVUjlt4asXTWiGVKjVim1oilp0Yss2vE0lEjlsk1YjE1YumuEcv0GrG0l7D8Ni1L8czT79q2FHzX/S1xgOl3xPH7xBxZxJGR7u9J938FdDH/pKALDmh10HvuCV8qewLPH9LyFPcwft82slSdA/2BYvPHtCz9fs4/JfbPz/EU8cNXsFsa/xP59lRajmIf/GPbyJiizXxPl3XmGLNK5R+LL9GcuT/Wd1EsMX9Z7LMw1kn9vyV/O9KyFXFuz7ZgZaQBFq/bKaALHRyDwAGtDnrPm+kYtK37axKx4TJIdWht6/7aWLN014jF1Ihlco1YOmrEMrtGLE/ViKWnRixTa8QypUYsnTVi6a0Ry6wascysEcu0GrHYGrF01YhlUo1YsjFm2da9Pow/RX3t0bbxvb5Job+9ZJ5J2dbvY98nC/jOOoPUhhbf6/vz2BiyTKoRS1eNWGyNWKbViGVmjVhm1Yilt0YsnTVimVIjlqk1YumpEctTNWKZXSOWjhqxTK4Ri6kRS3eNWKbXiKW9hGVKWpbivmNXmNMXfO+ewus21LuIwySOScwBTUOaNq1mcY9vKmkiH1wGqW6JpTtxHvycPYn983NMI4fgK9gtjfeQb9ME1nt3NjKmaDPf02Xl6zZjwSqV/+mJ8497fIjl9CimHO/tQr2T+qeQvzsIxHl7OgZmpLEd6c4Q0IUO7vGBA1od9J7DwgclnjOYmZjHkBZK1TFoJsVmlsBnQS+Jg2sW7YO9JZ8FvQI5mhXtg2j3EgsK32+dJcCyrVzMKmHpksvPqFmm1ygu3TViMTVimVwjlo4ascyuEcu0Gu3TPTWKy9QasUypEUtnjVh6a8Qyq0Ys02rEYmvE0lUjlkk1YsnGmGVb91tnRedyvg/fkXegvvaS+fB530vnQ8t6tp5H2nfWGaQ2tPh+a6/wZ/HTYZlUI5auGrHYGrFMqxHLrBqx9NaIpbNGLFNqxDK1Riw9NWLBZ1wdWGbXKC4dNWKZXCMWUyOW7hqxTK8RS1eN9un2krjMTsuymr+zo0TNEd//ZxPLnLQsxT2nuYnn9HPMI4fgK9gtjc8l3+YJ5HxONjKmaDOfsk5s1vS6q/pNpOtL1T7OLPMF9sc+EgfXfMpFX0ku+gRyMT/KBdrMp6zKqqzKqqzKqqzKqqzKqqzKqqzKqqzKqqzKqqzKqqzKqqzKqqzKqqzKqqzKqqzpWdPr5sXzEazrS9T8s1bMsiBtDIrnIxaSOLgWUC4WluRioUAuFkS5QJv5lFVZlVVZlVVZlVVZlVVZlVVZlVVZlVVZlVVZlVVZxwurgG7xG1vW9SVqjri+zCyL0rIU15cbJA6uRZSLRkkuGgK5WBTlAm3mU9aJzZped6C437NoFPsjsywW2B+XkDi4FlMulpTkYolALhZHuUCb+ZRVWZVVWZVVWZVVWZV1YrOm1219P2ddX6LmiO/nzLI0bQyK7+fLSBxcSykXy0pysUwgF0ujXKDNfMqqrMqqrMqqrMqqrMo6sVkFdIu/U8m6vkTNEd/PmWV5Wpbi+/kKEgfXcsrFipJcrBDIxfIoF2gz33hhFdAt1s3yUawbZtlRYN3sROLg2pFysVNJLnYSyMWOUS7QZr7xwmqor71tSx/GO6hv59DXSX27hL5J1Lcr+YS+3ULfFOrbPfR1Ud/K0NdLfXuEPv7bM/2hPof6BkJ9PvXlob6A+laF+iLqWx3qi6lvz+hzwvftFR0DfN/eUS593z5Ux+u+oW8q9e1HawJ9+4e+buo7IPT1UN+BoW8a9R0U+qZT38ElfMj1jtSHXPPaQK53pj7kehfqQ653pT7kejfqQ653pz7EaCX1IUZ7UB9i1E99iNEA9SFGOfUhRquoDzFaTX3bhb49qW/70LcX9e0Q+vamvhmhj3OPvzW8L/Xh77nsR31Y7/tTH/5GxAHUNyf0HUh9c0PfQdQ3L/QdTPtd8fvH0D8YXvufWSk+Ixa2jSxVnxHQL34Xmpal9bvQMNdC0pmXVqf1u9fIP7ShZYmhT5DFlmin18n72Wd/7Gi0bVnHrDs3je4AKl53Ds2/mDig1UHvWRQOCPh7y3OSxqGV+7nE0yCeOcSD9ywNPP44+rHuLdslXvvFfoh9C6VqP5Rbk/mI/fDpsAisnz8XgTXQeiaP+OP1aGmc124jLceItYh50W5Qv7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iqq7Iq63hh5XteC8aYxRLDfDGWvN+WaEtcL+f7jpjb37t4lO5dzE/sm49zXxS72VFMO+g9j9M9lfeE+lQa5zWRmPWC9DHP+70LXcQ/N/Id90f4/u/CKF7peFrrHjqYF21o8f3NeYIstkSb76X5vCPfi9q29PWVxCntfa6BZ3SfK/U9qaxt5HFhkDRYd3Fa3QHWzYJBA/0dVH8MD2zQ+3xBDsHsczi35H1cj++7WhqfK+zztvYPaPk1+hnydW4J9yzixjgfBxMf2wvuecTRIAZo8TFmEbE0/oIxbFBcFkUxS88y0F92jOHndBAzn9MHiUPyczB+xoL9T3QcG/GMRby/9EW+8zMNT9AzFmVrCtvOpjn/Es+FgKPsuZCfjsFzIeApey7kF/QdZk54YG1b32EkjgPzt8Ea+5BaF7HwzxAyR4NihPc8GeVsSWKe4nerbSNL1ef3EorN0rQsrd+tkha4oGNpfCZxLEsck4w0MS/azLe0hBVryK/jOdH70rO2njNiDl+q8reMWFYkZWkdj3ak+QdJg3V3Sqs7wLr4/gUN9HdQfToejqX3+YLjDph9DpeXvI/rS6NtLI0vF/Z5BXEMUhta/rjaSb4uL+GeTdwYx7r1awt542PxcgFflkW+LIuY+RrDUjGW1jWGWJs/n9J/52n539e2pTTatj7352sSfcTF1yQ6EnP5OSclnpOfp0epOl5B318bwLPvm4eHNq25aN1J69aszWiKzmi6dpqG6/xzjskUSvThvRjDY+N1CkX3yFCcvmn98LrRxiKjWGTka8yQzOEZJNYexDuDY5ODuHcOv32wwVG/6/nfLvjfKvjfJvjfIvjfHswgxpeFV/+9wJ8v+N8S+P3FH8v89zn/uez3Jb/v+OOIvybiz6saba3Pbv+9xh9X/L7v93t/LPWfF/5YurOzXZzt6mw3Z7s7W+lsDx8TZwPOcmernK12tqezvZzt7WwfZ/s628/Z/s4OcHags4OcHRxie4izQ501nR3m7HBnz3J2hLMjnR3l7Ghnxzh7trNjnR3n7HhnJzg70dlJzk52doqzU52d5ux0Z89xdoazM52d5exsZ+c4e66zc52d52yNs/OdXeBsrbN1zi50dpGzi52td/Y8Z5c42+Bso7NLnQ05u8zZ5c42OdvsbNjZFc6udHaVs6udXePsWmfXOXu+s+udvcDZDc5udHaTsxc6u9nZi5zd4uzFzm519hJntzl7qbPbnd3R1sr1nc5e7uwuZ3c7u8fZK5zd6+yVzu5z9ipn9zt7tbMH2lrnrQ85e42zh5291tkjbVt+o8ML/+7wIx38Zua0oeF1jYvXbG6su3TturX8zjeFdx4Q2ie3dsnG5g1Dw43+xqXu3zUbNgxdtW7tygaPbW5svGLzcGPz8JpNw40LNw1tbAys5HmbRmbeheHYgW+sa4aH1228bLgxPOQ23DC8/rIN1zSuWj98cWPoynWbLnQCvPGPnsnGPwkb92298Zq1a7e93W/Cdtjfj3IpuLoxdMVwY+jCxvlDV1y6dvP/AaGMc3yLUgIA",
+      "verificationKey": "0000000200000800000000740000000f00000003515f3109623eb3c25aa5b16a1a79fd558bac7a7ce62c4560a8c537c77ce80dd339128d1d37b6582ee9e6df9567efb64313471dfa18f520f9ce53161b50dbf7731bc5f900000003515f322bc4cce83a486a92c92fd59bd84e0f92595baa639fc2ed86b00ffa0dfded2a092a669a3bdb7a273a015eda494457cc7ed5236f26cee330c290d45a33b9daa94800000003515f332729426c008c085a81bd34d8ef12dd31e80130339ef99d50013a89e4558eee6d0fa4ffe2ee7b7b62eb92608b2251ac31396a718f9b34978888789042b790a30100000003515f342be6b6824a913eb7a57b03cb1ee7bfb4de02f2f65fe8a4e97baa7766ddb353a82a8a25c49dc63778cd9fe96173f12a2bc77f3682f4c4448f98f1df82c75234a100000003515f351f85760d6ab567465aadc2f180af9eae3800e6958fec96aef53fd8a7b195d7c000c6267a0dd5cfc22b3fe804f53e266069c0e36f51885baec1e7e67650c62e170000000c515f41524954484d455449430d9d0f8ece2aa12012fa21e6e5c859e97bd5704e5c122064a66051294bc5e04213f61f54a0ebdf6fee4d4a6ecf693478191de0c2899bcd8e86a636c8d3eff43400000003515f43224a99d02c86336737c8dd5b746c40d2be6aead8393889a76a18d664029096e90f7fe81adcc92a74350eada9622ac453f49ebac24a066a1f83b394df54dfa0130000000c515f46495845445f42415345060e8a013ed289c2f9fd7473b04f6594b138ddb4b4cf6b901622a14088f04b8d2c83ff74fce56e3d5573b99c7b26d85d5046ce0c6559506acb7a675e7713eb3a00000007515f4c4f4749430721a91cb8da4b917e054f72147e1760cfe0ef3d45090ac0f4961d84ec1996961a25e787b26bd8b50b1a99450f77a424a83513c2b33af268cd253b0587ff50c700000003515f4d05dbd8623b8652511e1eb38d38887a69eceb082f807514f09e127237c5213b401b9325b48c6c225968002318095f89d0ef9cf629b2b7f0172e03bc39aacf6ed800000007515f52414e474504b57a3805e41df328f5ca9aefa40fad5917391543b7b65c6476e60b8f72e9ad07c92f3b3e11c8feae96dedc4b14a6226ef3201244f37cfc1ee5b96781f48d2b000000075349474d415f3125001d1954a18571eaa007144c5a567bb0d2be4def08a8be918b8c05e3b27d312c59ed41e09e144eab5de77ca89a2fd783be702a47c951d3112e3de02ce6e47c000000075349474d415f3223994e6a23618e60fa01c449a7ab88378709197e186d48d604bfb6931ffb15ad11c5ec7a0700570f80088fd5198ab5d5c227f2ad2a455a6edeec024156bb7beb000000075349474d415f3300cda5845f23468a13275d18bddae27c6bb189cf9aa95b6a03a0cb6688c7e8d829639b45cf8607c525cc400b55ebf90205f2f378626dc3406cc59b2d1b474fba000000075349474d415f342d299e7928496ea2d37f10b43afd6a80c90a33b483090d18069ffa275eedb2fc2f82121e8de43dc036d99b478b6227ceef34248939987a19011f065d8b5cef5c0000000010000000000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f"
+    },
+    {
+      "name": "cast_vote",
+      "functionType": "secret",
+      "isInternal": false,
+      "parameters": [
+        {
+          "name": "voteId",
+          "type": {
+            "kind": "field"
+          },
+          "visibility": "private"
+        }
+      ],
+      "returnTypes": [],
+      "bytecode": "H4sIAAAAAAAA/+2dB3CcxRXH3526u02xDIaYYsA25ZqkE6JYGCzACAwCHDqnu5MRlmVbBTC9904KgRRCeieddEJ6J510QnonvWKyf/R2vDqdPHejt8ftPO3Mm3dzWu23v63//e77dpsjRM3GbLAfV7KPTS3E60wadUXSTcZaU6l8WyIfT8YzsUR7b7ollmrpbU3H0/GWdEsukU4m8+lUuq29t70t1h5PJfPxvpb2ZB8nXCeXx5gP7nqTRr0H7voq524waTR44G4Q5p6svU81n82C+YxwWS7h9BYa22asWak/0NgirjOUyzwul0VVkK/djNXQ9vbkBuk+FiHZNmbzWMOfdze22Ngexmbzd03GogVc9c7nlUL5KTZmxqYY6py8Njl5tjxz+O+1stdNNjllWtgWCsuNnOs3ctkjrM+PrB3tHejPrslv7RzMrc0MjfRnBjpzuaH88HCxyqspcqGoA19XEM+tWPu3BirSkFeSSKnEbe91Wxt60WL2e7Cfa2zPgjxEC/Iy1dFasCfF95RLK1ZDE3ubW6lSed6dKjOrxqYW4osF8+mW64vYL6Gx2RXB7bUR57uQR79Gh8MGd1Cw17TcdkSsk81LAteqpfFhRyOivT7yP4s/mxGxJ58dyo+YEdEdAGsLuKJFWF1G8DXI8sVsXm2webLXmUHb202jk48m2XzE7bUK89Hk5KPR+Wz/NsPJk/1uZkF+3b7g/q8t15kOs9dJBBdCB8ZksYT9Xsb2LrhmVPja7qA51QloL/IzAEszLxZk3luQuVBMRLgdFLYLhH1o+9JhCX83vaQi2pcmLqn2rYJ8LaXxS6oITRxQpIXGQpJtmzbsR+MHywqIifgLtZTCRGGXjZsz2Q2dQ+tHN+YHR4bdAilUWBEnEVd11RbEdwvPnV29zTRUhFIq7aUkN6ruJ5ev55cfhQtXt2Kk+KPkZ/aTagOtmUQul4slfZbBUpIfceBtD9zf2AHGlhlbbmwFjY2uBxk72NghuK4xNPQE2iGNLb0R3A7oLhc0LY/sUqhe9ro5914MFZRnYbm55Ym8LuLP+cEto/nR/NgNotWjg9mR/k2DqzIDA25DsBexDaKmCGTh9+56wa5d6pzv7P81ON7bCFypmyHLqLpHIw4JtyxS7FucCnKnUlTkc0XKzNVSUY4T3UGcyCTpTNZjvC78ogz+bEFmpK7RwgUq/dtQC/lpYDXC/MsEmPN9YyEVQPlJyzpJ5lYnrXg6mUi0JREvnTOXyWUT6UQi15uKZWOZbCLfnoq396USqWQ2l+01aWbifbG+TLa9Lz2Wr0r9PtVK8pIGoY0myhG3/XuQB+Pkf7Hy8zrY+aqcNg/ppkmu0fviTsvXUdG8Sgx0aQ/ptpNsx0QnbGdfKZW2nPxMAsLtYpxKO5R9BylTaQD3pdI6uEClO0kH+Wlg0iptuQCzVWmHBlB+0ipNkvkwCk+lHUayk4ENh9O0ShOpnMM9pHsEVbdKA/cR8nXkRaV1cF6l0z2SZDsmOuGRVFmVtoL8TALC7WKcSrNpdpIylYb0fKm0Ti5Q6U7SSX4amLRKWyHAbFXaygDKT1qlSTIfReGptKNIdjKwYRVNqzSRylnlId2jqbpVGriPlq8jLyqtk/Mqne4xJNsx0QmPocqqtBj5mQSE28U4lbaafRcpU2kA96XSurhApTtJF/lpYNIqLSbAbFXa6gDKT1qlSTIfS+GptGNJdjKw4TiaVmkilXOch3SPp+pWaeA+Xr6OvKi0Ls6rdLprSLZjohOuocqqtDj5mQSE28U4lXYC+25SptIA7kuldXOBSneSbvLTwKRVWlyA2aq0EwIoP2mVJsl8IoWn0k4k2cnAhpNoWqWJVM5JHtJdS9Wt0sC9Vr6OvKi0bs6rdLonk2zHRCc8mSqr0hLkZxIQbhfjVNop7HtImUoDuC+V1sMFKt1JeshPA5NWaQkBZqvSTgmg/KRVmiTzqRSeSjuVZCcDG06jaZUmUjmneUj3dKpulQbu0+XryItK6+G8Sqe7jmQ7JjrhOpqozqQH1KhgGexPfiYR6bo6QCCfxd5+l64byR0QkhWqm9jUQrwrkHx2B5LPSgm7qbbPqCDzgQqZD6Iwxt4Xk9zYi7xhcwUrXJE29kdqYd/BvpM99hg6g5nsVsy2Xrc5/mD2h9CO92Gab+xMJz0rlieLjxX9WWXGP7vM+OeUGf/cMuOfV2b888uMnykzfm+Z8bNlxs+VGT9fZvy+MuOvLzP+BWXG7y8z/oVO/Ogk8bEry4YS4w2UGG9jifEGS4y3qcR4m0uMt6XEeEMlxhsuMd5IifFGS4x3UYnxLi4x3iUlxttaYrxLnXjrON6Z/PelVNp+emexP5v9OezPZX8e+/PZZ9j3ss+yz7HPs+9jv579Bez72V/IfgP7AfYb2Q+y38R+M/st7IfYD7MfYT/K/iL2F7O/hP1W9peWWD7TvjIer8NcRhPHX6tLzmB/GfsFxi6n8UFar11BIroS90693hiOCDJfSX60dDXfu7kqEOYaQearA2GuFWS+JhDmOkHmawNhrhdkvi4Q5gZB5usDYd5NkPmGQJibBZlvVMh8k0LmmxUy36KQ+VaFzLcpZL5dIfMdCpnvVMh8l0LmuxUy36OQ+V6FzPcpZH6JQuaXKmR+mULmlytkvl8h8ysUMj+gkPlBhcyvVMj8KoXMr1bI/BqFzA8pZH6tQuaHFTK/TiHz6xUyv0Eh8xsVMr9JIfObFTK/RSHzWxUyv00h89sVMr9DIfM7FTK/SyHzIwqZ362Q+T0Kmd+rkPl9Cpnfr5D5AwqZP6iQ+VGFzB9SyPxhhcwfUcj8UYXMH1PI/HGFzJ9QyPyYQuZPKmR+XCHzpxQyf1oh82cUMn9WIfPnFDJ/XiHzFxQyf1Eh85cUMn9ZIfNXFDJ/VSHz1xQyP6GQ+esKmb+hkPmbCpm/pZD52wqZv6OQ+bsKmZ9UyPy9QJj3EWT+vsJ6/oFC5h8qZP6RQuYfK2T+iULmpxQy/1Qh89MKmX+mkPnnCpl/oZD5lwqZf6WQ+dcKmX8TCPMVgsy/VVjPv1PI/HuFzH9QyPxHhcx/Usj8jELmPytk/otC5r8qZP6bQua/K2T+h0Lmfypk/pdC5n8rZP6PQub/KmT+n0LmZwNhvlyQeZvCen5OITMOS9fGHFHIHFXIXKOQuVYhc51C5nqFzA0KmRsVMjcFwtwoyDwjEOYmQeaZgTDPEGSeFQjzTEHm2YEwzxJknhMI82xB5rmBMM8RZJ4XCPNcQeb5gTDPE2ReEAjzfEHmnQJhXiDIvHMgzDsJMu8SCPPOgsy7BsK8iyDzwkCYdxVkbhZkXsjpRJi5xlitsTpj9cYajGFNiDUS1gzQ0NCU0FjQHJiDMSdhjMaYhT6MNo06BvNCp0wfZH+lsauMXW3sGmPXGrvO2PXGbjB2o7GbjN1s7BZjtxq7zdjtxu4wdqexu4zdbeweY/cau88YzrnHue84Bx3ngt9vDOdGP8DXxjm7OHcW57DiXNKHjOHcyoeN4VxDnPOHc+9wDhzORcM5YTg3C+dI4VwlnDOEc3dwDg3OZXnEGM7twDkWONcB5xxg33/sg4994R81hn3DsY829pXGPsvYdxj78GJf2seMYd/Sx41hX0vs84h9D7EPIPbFwz5x2DcN+4hhXy3sM4V9l7APEfblecIY9m3BPibY1wP7XGDfB+yDgH0BnjSG98bxHjXeK8Z7tnjvFO9h4r3Ep4zhvbWnjeG9Jrzng/de8B4I3ovAewJ4bh7PkeO5ajxnjOdu8Rwqnst8xhie28NzbHiuC8854bkfPAeD50LwnASeG8Dv6PhdGb+z4ndH/A6H36XQ6PC7Be7j47427vPivifuA+K+GO4T4b4J7iNgXY11JtZdWIdAl0OnQrdBx2BexzyHcR/jIMYF9BMb/g/IIJGW8/sAAA==",
+      "verificationKey": "0000000200000800000000740000000f00000003515f3109623eb3c25aa5b16a1a79fd558bac7a7ce62c4560a8c537c77ce80dd339128d1d37b6582ee9e6df9567efb64313471dfa18f520f9ce53161b50dbf7731bc5f900000003515f322bc4cce83a486a92c92fd59bd84e0f92595baa639fc2ed86b00ffa0dfded2a092a669a3bdb7a273a015eda494457cc7ed5236f26cee330c290d45a33b9daa94800000003515f332729426c008c085a81bd34d8ef12dd31e80130339ef99d50013a89e4558eee6d0fa4ffe2ee7b7b62eb92608b2251ac31396a718f9b34978888789042b790a30100000003515f342be6b6824a913eb7a57b03cb1ee7bfb4de02f2f65fe8a4e97baa7766ddb353a82a8a25c49dc63778cd9fe96173f12a2bc77f3682f4c4448f98f1df82c75234a100000003515f351f85760d6ab567465aadc2f180af9eae3800e6958fec96aef53fd8a7b195d7c000c6267a0dd5cfc22b3fe804f53e266069c0e36f51885baec1e7e67650c62e170000000c515f41524954484d455449430d9d0f8ece2aa12012fa21e6e5c859e97bd5704e5c122064a66051294bc5e04213f61f54a0ebdf6fee4d4a6ecf693478191de0c2899bcd8e86a636c8d3eff43400000003515f43224a99d02c86336737c8dd5b746c40d2be6aead8393889a76a18d664029096e90f7fe81adcc92a74350eada9622ac453f49ebac24a066a1f83b394df54dfa0130000000c515f46495845445f42415345060e8a013ed289c2f9fd7473b04f6594b138ddb4b4cf6b901622a14088f04b8d2c83ff74fce56e3d5573b99c7b26d85d5046ce0c6559506acb7a675e7713eb3a00000007515f4c4f4749430721a91cb8da4b917e054f72147e1760cfe0ef3d45090ac0f4961d84ec1996961a25e787b26bd8b50b1a99450f77a424a83513c2b33af268cd253b0587ff50c700000003515f4d05dbd8623b8652511e1eb38d38887a69eceb082f807514f09e127237c5213b401b9325b48c6c225968002318095f89d0ef9cf629b2b7f0172e03bc39aacf6ed800000007515f52414e474504b57a3805e41df328f5ca9aefa40fad5917391543b7b65c6476e60b8f72e9ad07c92f3b3e11c8feae96dedc4b14a6226ef3201244f37cfc1ee5b96781f48d2b000000075349474d415f3125001d1954a18571eaa007144c5a567bb0d2be4def08a8be918b8c05e3b27d312c59ed41e09e144eab5de77ca89a2fd783be702a47c951d3112e3de02ce6e47c000000075349474d415f3223994e6a23618e60fa01c449a7ab88378709197e186d48d604bfb6931ffb15ad11c5ec7a0700570f80088fd5198ab5d5c227f2ad2a455a6edeec024156bb7beb000000075349474d415f3300cda5845f23468a13275d18bddae27c6bb189cf9aa95b6a03a0cb6688c7e8d829639b45cf8607c525cc400b55ebf90205f2f378626dc3406cc59b2d1b474fba000000075349474d415f342d299e7928496ea2d37f10b43afd6a80c90a33b483090d18069ffa275eedb2fc2f82121e8de43dc036d99b478b6227ceef34248939987a19011f065d8b5cef5c0000000010000000000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f"
+    },
+    {
+      "name": "compute_note_hash_and_nullifier",
+      "functionType": "unconstrained",
+      "isInternal": false,
+      "parameters": [
+        {
+          "name": "contract_address",
+          "type": {
+            "kind": "field"
+          },
+          "visibility": "private"
+        },
+        {
+          "name": "nonce",
+          "type": {
+            "kind": "field"
+          },
+          "visibility": "private"
+        },
+        {
+          "name": "storage_slot",
+          "type": {
+            "kind": "field"
+          },
+          "visibility": "private"
+        },
+        {
+          "name": "serialized_note",
+          "type": {
+            "kind": "array",
+            "length": 0,
+            "type": {
+              "kind": "field"
+            }
+          },
+          "visibility": "private"
+        }
+      ],
+      "returnTypes": [
+        {
+          "kind": "array",
+          "length": 4,
+          "type": {
+            "kind": "field"
+          }
+        }
+      ],
+      "bytecode": "H4sIAAAAAAAA/+2VUQ6CMAyGu00GxcQ7eIOZeADufypXbJPfqk/WBwJNmkHH2q9/tjESUaKnle4nejebX3Rsv9ktxeVq/+TMG+EsgZzpA2eCfSHj0L12H7tfNc4at31kMVuXIVZcfoZ5swrPS1BvNV77Nig/wYj9XkCrwLp3dhqhnl43gvqyZoplWXXl4JySYwZ+69XYzzDP8M0cy7HeVRO9amrvyHew7puVIVYhlh2znEN/TkN/BKQFpHCBGt8ucLMHOSrVPQkIAAA=",
+      "verificationKey": "0000000200000800000000740000000f00000003515f3109623eb3c25aa5b16a1a79fd558bac7a7ce62c4560a8c537c77ce80dd339128d1d37b6582ee9e6df9567efb64313471dfa18f520f9ce53161b50dbf7731bc5f900000003515f322bc4cce83a486a92c92fd59bd84e0f92595baa639fc2ed86b00ffa0dfded2a092a669a3bdb7a273a015eda494457cc7ed5236f26cee330c290d45a33b9daa94800000003515f332729426c008c085a81bd34d8ef12dd31e80130339ef99d50013a89e4558eee6d0fa4ffe2ee7b7b62eb92608b2251ac31396a718f9b34978888789042b790a30100000003515f342be6b6824a913eb7a57b03cb1ee7bfb4de02f2f65fe8a4e97baa7766ddb353a82a8a25c49dc63778cd9fe96173f12a2bc77f3682f4c4448f98f1df82c75234a100000003515f351f85760d6ab567465aadc2f180af9eae3800e6958fec96aef53fd8a7b195d7c000c6267a0dd5cfc22b3fe804f53e266069c0e36f51885baec1e7e67650c62e170000000c515f41524954484d455449430d9d0f8ece2aa12012fa21e6e5c859e97bd5704e5c122064a66051294bc5e04213f61f54a0ebdf6fee4d4a6ecf693478191de0c2899bcd8e86a636c8d3eff43400000003515f43224a99d02c86336737c8dd5b746c40d2be6aead8393889a76a18d664029096e90f7fe81adcc92a74350eada9622ac453f49ebac24a066a1f83b394df54dfa0130000000c515f46495845445f42415345060e8a013ed289c2f9fd7473b04f6594b138ddb4b4cf6b901622a14088f04b8d2c83ff74fce56e3d5573b99c7b26d85d5046ce0c6559506acb7a675e7713eb3a00000007515f4c4f4749430721a91cb8da4b917e054f72147e1760cfe0ef3d45090ac0f4961d84ec1996961a25e787b26bd8b50b1a99450f77a424a83513c2b33af268cd253b0587ff50c700000003515f4d05dbd8623b8652511e1eb38d38887a69eceb082f807514f09e127237c5213b401b9325b48c6c225968002318095f89d0ef9cf629b2b7f0172e03bc39aacf6ed800000007515f52414e474504b57a3805e41df328f5ca9aefa40fad5917391543b7b65c6476e60b8f72e9ad07c92f3b3e11c8feae96dedc4b14a6226ef3201244f37cfc1ee5b96781f48d2b000000075349474d415f3125001d1954a18571eaa007144c5a567bb0d2be4def08a8be918b8c05e3b27d312c59ed41e09e144eab5de77ca89a2fd783be702a47c951d3112e3de02ce6e47c000000075349474d415f3223994e6a23618e60fa01c449a7ab88378709197e186d48d604bfb6931ffb15ad11c5ec7a0700570f80088fd5198ab5d5c227f2ad2a455a6edeec024156bb7beb000000075349474d415f3300cda5845f23468a13275d18bddae27c6bb189cf9aa95b6a03a0cb6688c7e8d829639b45cf8607c525cc400b55ebf90205f2f378626dc3406cc59b2d1b474fba000000075349474d415f342d299e7928496ea2d37f10b43afd6a80c90a33b483090d18069ffa275eedb2fc2f82121e8de43dc036d99b478b6227ceef34248939987a19011f065d8b5cef5c0000000010000000000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f"
+    },
+    {
+      "name": "constructor",
+      "functionType": "secret",
+      "isInternal": false,
+      "parameters": [
+        {
+          "name": "admin",
+          "type": {
+            "kind": "struct",
+            "path": "aztec::types::address::AztecAddress",
+            "fields": [
+              {
+                "name": "address",
+                "type": {
+                  "kind": "field"
+                }
+              }
+            ]
+          },
+          "visibility": "private"
+        }
+      ],
+      "returnTypes": [],
+      "bytecode": "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",
+      "verificationKey": "0000000200000800000000740000000f00000003515f3109623eb3c25aa5b16a1a79fd558bac7a7ce62c4560a8c537c77ce80dd339128d1d37b6582ee9e6df9567efb64313471dfa18f520f9ce53161b50dbf7731bc5f900000003515f322bc4cce83a486a92c92fd59bd84e0f92595baa639fc2ed86b00ffa0dfded2a092a669a3bdb7a273a015eda494457cc7ed5236f26cee330c290d45a33b9daa94800000003515f332729426c008c085a81bd34d8ef12dd31e80130339ef99d50013a89e4558eee6d0fa4ffe2ee7b7b62eb92608b2251ac31396a718f9b34978888789042b790a30100000003515f342be6b6824a913eb7a57b03cb1ee7bfb4de02f2f65fe8a4e97baa7766ddb353a82a8a25c49dc63778cd9fe96173f12a2bc77f3682f4c4448f98f1df82c75234a100000003515f351f85760d6ab567465aadc2f180af9eae3800e6958fec96aef53fd8a7b195d7c000c6267a0dd5cfc22b3fe804f53e266069c0e36f51885baec1e7e67650c62e170000000c515f41524954484d455449430d9d0f8ece2aa12012fa21e6e5c859e97bd5704e5c122064a66051294bc5e04213f61f54a0ebdf6fee4d4a6ecf693478191de0c2899bcd8e86a636c8d3eff43400000003515f43224a99d02c86336737c8dd5b746c40d2be6aead8393889a76a18d664029096e90f7fe81adcc92a74350eada9622ac453f49ebac24a066a1f83b394df54dfa0130000000c515f46495845445f42415345060e8a013ed289c2f9fd7473b04f6594b138ddb4b4cf6b901622a14088f04b8d2c83ff74fce56e3d5573b99c7b26d85d5046ce0c6559506acb7a675e7713eb3a00000007515f4c4f4749430721a91cb8da4b917e054f72147e1760cfe0ef3d45090ac0f4961d84ec1996961a25e787b26bd8b50b1a99450f77a424a83513c2b33af268cd253b0587ff50c700000003515f4d05dbd8623b8652511e1eb38d38887a69eceb082f807514f09e127237c5213b401b9325b48c6c225968002318095f89d0ef9cf629b2b7f0172e03bc39aacf6ed800000007515f52414e474504b57a3805e41df328f5ca9aefa40fad5917391543b7b65c6476e60b8f72e9ad07c92f3b3e11c8feae96dedc4b14a6226ef3201244f37cfc1ee5b96781f48d2b000000075349474d415f3125001d1954a18571eaa007144c5a567bb0d2be4def08a8be918b8c05e3b27d312c59ed41e09e144eab5de77ca89a2fd783be702a47c951d3112e3de02ce6e47c000000075349474d415f3223994e6a23618e60fa01c449a7ab88378709197e186d48d604bfb6931ffb15ad11c5ec7a0700570f80088fd5198ab5d5c227f2ad2a455a6edeec024156bb7beb000000075349474d415f3300cda5845f23468a13275d18bddae27c6bb189cf9aa95b6a03a0cb6688c7e8d829639b45cf8607c525cc400b55ebf90205f2f378626dc3406cc59b2d1b474fba000000075349474d415f342d299e7928496ea2d37f10b43afd6a80c90a33b483090d18069ffa275eedb2fc2f82121e8de43dc036d99b478b6227ceef34248939987a19011f065d8b5cef5c0000000010000000000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f"
+    },
+    {
+      "name": "end_vote",
+      "functionType": "open",
+      "isInternal": false,
+      "parameters": [],
+      "returnTypes": [
+        {
+          "kind": "struct",
+          "path": "aztec::abi::PublicCircuitPublicInputs",
+          "fields": [
+            {
+              "name": "call_context",
+              "type": {
+                "kind": "struct",
+                "path": "aztec::abi::CallContext",
+                "fields": [
+                  {
+                    "name": "msg_sender",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "storage_contract_address",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "portal_contract_address",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "function_selector",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "is_delegate_call",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  },
+                  {
+                    "name": "is_static_call",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  },
+                  {
+                    "name": "is_contract_deployment",
+                    "type": {
+                      "kind": "boolean"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "args_hash",
+              "type": {
+                "kind": "field"
+              }
+            },
+            {
+              "name": "return_values",
+              "type": {
+                "kind": "array",
+                "length": 4,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "contract_storage_update_requests",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "struct",
+                  "path": "aztec::abi::ContractStorageUpdateRequest",
+                  "fields": [
+                    {
+                      "name": "storage_slot",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "old_value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "new_value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "contract_storage_read",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "struct",
+                  "path": "aztec::abi::ContractStorageRead",
+                  "fields": [
+                    {
+                      "name": "storage_slot",
+                      "type": {
+                        "kind": "field"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "type": {
+                        "kind": "field"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "public_call_stack",
+              "type": {
+                "kind": "array",
+                "length": 4,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_commitments",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_nullifiers",
+              "type": {
+                "kind": "array",
+                "length": 16,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "new_l2_to_l1_msgs",
+              "type": {
+                "kind": "array",
+                "length": 2,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "unencrypted_logs_hash",
+              "type": {
+                "kind": "array",
+                "length": 2,
+                "type": {
+                  "kind": "field"
+                }
+              }
+            },
+            {
+              "name": "unencrypted_log_preimages_length",
+              "type": {
+                "kind": "field"
+              }
+            },
+            {
+              "name": "block_data",
+              "type": {
+                "kind": "struct",
+                "path": "aztec::abi::HistoricBlockData",
+                "fields": [
+                  {
+                    "name": "note_hash_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "nullifier_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "contract_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "l1_to_l2_messages_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "blocks_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "public_data_tree_root",
+                    "type": {
+                      "kind": "field"
+                    }
+                  },
+                  {
+                    "name": "global_variables_hash",
+                    "type": {
+                      "kind": "field"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "prover_address",
+              "type": {
+                "kind": "field"
+              }
+            }
+          ]
+        }
+      ],
+      "bytecode": "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",
+      "verificationKey": "0000000200000800000000740000000f00000003515f3109623eb3c25aa5b16a1a79fd558bac7a7ce62c4560a8c537c77ce80dd339128d1d37b6582ee9e6df9567efb64313471dfa18f520f9ce53161b50dbf7731bc5f900000003515f322bc4cce83a486a92c92fd59bd84e0f92595baa639fc2ed86b00ffa0dfded2a092a669a3bdb7a273a015eda494457cc7ed5236f26cee330c290d45a33b9daa94800000003515f332729426c008c085a81bd34d8ef12dd31e80130339ef99d50013a89e4558eee6d0fa4ffe2ee7b7b62eb92608b2251ac31396a718f9b34978888789042b790a30100000003515f342be6b6824a913eb7a57b03cb1ee7bfb4de02f2f65fe8a4e97baa7766ddb353a82a8a25c49dc63778cd9fe96173f12a2bc77f3682f4c4448f98f1df82c75234a100000003515f351f85760d6ab567465aadc2f180af9eae3800e6958fec96aef53fd8a7b195d7c000c6267a0dd5cfc22b3fe804f53e266069c0e36f51885baec1e7e67650c62e170000000c515f41524954484d455449430d9d0f8ece2aa12012fa21e6e5c859e97bd5704e5c122064a66051294bc5e04213f61f54a0ebdf6fee4d4a6ecf693478191de0c2899bcd8e86a636c8d3eff43400000003515f43224a99d02c86336737c8dd5b746c40d2be6aead8393889a76a18d664029096e90f7fe81adcc92a74350eada9622ac453f49ebac24a066a1f83b394df54dfa0130000000c515f46495845445f42415345060e8a013ed289c2f9fd7473b04f6594b138ddb4b4cf6b901622a14088f04b8d2c83ff74fce56e3d5573b99c7b26d85d5046ce0c6559506acb7a675e7713eb3a00000007515f4c4f4749430721a91cb8da4b917e054f72147e1760cfe0ef3d45090ac0f4961d84ec1996961a25e787b26bd8b50b1a99450f77a424a83513c2b33af268cd253b0587ff50c700000003515f4d05dbd8623b8652511e1eb38d38887a69eceb082f807514f09e127237c5213b401b9325b48c6c225968002318095f89d0ef9cf629b2b7f0172e03bc39aacf6ed800000007515f52414e474504b57a3805e41df328f5ca9aefa40fad5917391543b7b65c6476e60b8f72e9ad07c92f3b3e11c8feae96dedc4b14a6226ef3201244f37cfc1ee5b96781f48d2b000000075349474d415f3125001d1954a18571eaa007144c5a567bb0d2be4def08a8be918b8c05e3b27d312c59ed41e09e144eab5de77ca89a2fd783be702a47c951d3112e3de02ce6e47c000000075349474d415f3223994e6a23618e60fa01c449a7ab88378709197e186d48d604bfb6931ffb15ad11c5ec7a0700570f80088fd5198ab5d5c227f2ad2a455a6edeec024156bb7beb000000075349474d415f3300cda5845f23468a13275d18bddae27c6bb189cf9aa95b6a03a0cb6688c7e8d829639b45cf8607c525cc400b55ebf90205f2f378626dc3406cc59b2d1b474fba000000075349474d415f342d299e7928496ea2d37f10b43afd6a80c90a33b483090d18069ffa275eedb2fc2f82121e8de43dc036d99b478b6227ceef34248939987a19011f065d8b5cef5c0000000010000000000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f"
+    },
+    {
+      "name": "get_vote",
+      "functionType": "unconstrained",
+      "isInternal": false,
+      "parameters": [
+        {
+          "name": "voteId",
+          "type": {
+            "kind": "field"
+          },
+          "visibility": "private"
+        }
+      ],
+      "returnTypes": [
+        {
+          "kind": "field"
+        }
+      ],
+      "bytecode": "H4sIAAAAAAAA/81WS07DMBB1/nUa0nIAkE9QJd2wQSJngBNEamCTEikJ4vrU6Yx4GC+QaquMlHricee9eZM4DoUQgThbBD4azzU0VpdZHbjLVSHf8HQ9kS/pHi0Fv3GEn7rXp0qAqzTq01ZSPHaLu5f0DNh6b+omAF9zSdxyWXRNHdenc2TAn2tl7muIpzBmbnksz38ifmrK98jvr1zDK3P11f+V25z7gnKylitDU6wnd1yPzsHvcgxYOWAWHnq3plwBXYwhAffGA24B2iIPxopgzT3EeJ3ZDx/aoDXgMxZyCa7MRYrfe7GEeAZzofFf3YMHiJfkh5Y8pWUd1r7xUDviNHDPWDlwKP8Bl8zCZeuWy7Jf3Ipv4/5sgQdz4nUS/A3Mhca6jDhHjvXz8B2oNX8+ZwjoDVoDPuPrvZ3f32kexvate+7aQwApYiMdHhfRj0BKPhbEMIefX22ZsByjGxqry6zGAoSlAFv8jsZHGl/OeqipH2ZVqffTb9v3w2d32CmMTer4Mc1qmttxVq/jcFT17guK25c6MAwAAA==",
+      "verificationKey": "0000000200000800000000740000000f00000003515f3109623eb3c25aa5b16a1a79fd558bac7a7ce62c4560a8c537c77ce80dd339128d1d37b6582ee9e6df9567efb64313471dfa18f520f9ce53161b50dbf7731bc5f900000003515f322bc4cce83a486a92c92fd59bd84e0f92595baa639fc2ed86b00ffa0dfded2a092a669a3bdb7a273a015eda494457cc7ed5236f26cee330c290d45a33b9daa94800000003515f332729426c008c085a81bd34d8ef12dd31e80130339ef99d50013a89e4558eee6d0fa4ffe2ee7b7b62eb92608b2251ac31396a718f9b34978888789042b790a30100000003515f342be6b6824a913eb7a57b03cb1ee7bfb4de02f2f65fe8a4e97baa7766ddb353a82a8a25c49dc63778cd9fe96173f12a2bc77f3682f4c4448f98f1df82c75234a100000003515f351f85760d6ab567465aadc2f180af9eae3800e6958fec96aef53fd8a7b195d7c000c6267a0dd5cfc22b3fe804f53e266069c0e36f51885baec1e7e67650c62e170000000c515f41524954484d455449430d9d0f8ece2aa12012fa21e6e5c859e97bd5704e5c122064a66051294bc5e04213f61f54a0ebdf6fee4d4a6ecf693478191de0c2899bcd8e86a636c8d3eff43400000003515f43224a99d02c86336737c8dd5b746c40d2be6aead8393889a76a18d664029096e90f7fe81adcc92a74350eada9622ac453f49ebac24a066a1f83b394df54dfa0130000000c515f46495845445f42415345060e8a013ed289c2f9fd7473b04f6594b138ddb4b4cf6b901622a14088f04b8d2c83ff74fce56e3d5573b99c7b26d85d5046ce0c6559506acb7a675e7713eb3a00000007515f4c4f4749430721a91cb8da4b917e054f72147e1760cfe0ef3d45090ac0f4961d84ec1996961a25e787b26bd8b50b1a99450f77a424a83513c2b33af268cd253b0587ff50c700000003515f4d05dbd8623b8652511e1eb38d38887a69eceb082f807514f09e127237c5213b401b9325b48c6c225968002318095f89d0ef9cf629b2b7f0172e03bc39aacf6ed800000007515f52414e474504b57a3805e41df328f5ca9aefa40fad5917391543b7b65c6476e60b8f72e9ad07c92f3b3e11c8feae96dedc4b14a6226ef3201244f37cfc1ee5b96781f48d2b000000075349474d415f3125001d1954a18571eaa007144c5a567bb0d2be4def08a8be918b8c05e3b27d312c59ed41e09e144eab5de77ca89a2fd783be702a47c951d3112e3de02ce6e47c000000075349474d415f3223994e6a23618e60fa01c449a7ab88378709197e186d48d604bfb6931ffb15ad11c5ec7a0700570f80088fd5198ab5d5c227f2ad2a455a6edeec024156bb7beb000000075349474d415f3300cda5845f23468a13275d18bddae27c6bb189cf9aa95b6a03a0cb6688c7e8d829639b45cf8607c525cc400b55ebf90205f2f378626dc3406cc59b2d1b474fba000000075349474d415f342d299e7928496ea2d37f10b43afd6a80c90a33b483090d18069ffa275eedb2fc2f82121e8de43dc036d99b478b6227ceef34248939987a19011f065d8b5cef5c0000000010000000000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f"
+    }
+  ],
+  "events": [],
+  "debug": {
+    "debugSymbols": [
+      "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r5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr5rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr7rIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr4bIr+wlAqxzg3bD5wbtis8N2h2fG7RLPjdot3xu0K753KDd87lBu+hzg3rTIso6N6g3LcKsc4N60yLOOjeoNy0CrXODetMi0jo3qDctQq1zg3rTItY6N6g3LYKtc4N60yLaOjeoNy3CrXODetMi3jo3qDctAq5zg3rTIuI6N6g3LUKuc4N60yLmOjeoNy2CrnODetMi6jo3qDctwq5zg3rTIu46N6g3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/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqI/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqK/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/KqJ/CpFfpUiv0qRX6XIr1LkVynyqxT5VYr8KkV+lSK/SpFfpcivUuRXKfKrFPlVivwqRX6VIr9KkV+lyK9S5Fcp8qsU+VWK/CpFfpUiv0qRX6XIr1LkVynyqxT5VYr8KkV+lSK/SpFfpcivUuRXKfKrFPlVivwqRX6VIr9KkV+lyK9S5Fcp8qsU+VWK/CpFfpUiv0qR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",
+      "eJyrVsrJT04syczPK1ayqq6tBQAz9wY7",
+      "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koXHkoXHkoXHkoXHksVLs23DY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nCY8nSY8nSY8nSY8nSY8nypdm26bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk6bFk3WPJuseSdY8l6x5L1l+abds9lqx7LFn3WLLusWTdY8m6x5J1jyXrHkvWPZaseyxZ91iy7rFk3WPJuseSdY8l6x5L1j2WrHssWfdYsu6xZN1jybrHknWPJeseS9Y9lqx7LFn3WLLusWTdY8m6x5J1jyXrHkvWPZaseyxZ91iy7rFk3WPJuseSdY8l6x5L1j2WrHssWfdYsu6xZN1jybrHknWPJeseS9Y9lqx7LFn3WLLusWTdY8m6x5J1jyXrHkvWPZaseyxZ91iy7rFk3WPJuseSdY8l6x5L1j2WrHssWfdYsu6xZN1jybrHknWPJeseS9Y9lqx7LFn3WLLusWTdY8m6x5J1jyXrHkvWPZaseyxZ91iy7rFk3WPJuseSdY8l6x5L1j2WrHss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"
+    ],
+    "fileMap": {
+      "1": {
+        "source": "contract Voting {\n    use dep::aztec::{\n    context::{PrivateContext, Context},\n    oracle::get_secret_key::get_secret_key, // used to compute nullifier\n    selector::compute_selector, // used to compute function selector for calling a function \n     state_vars::{ map::Map, public_state::PublicState,}, \n     types::type_serialization::{ // serialization methods for using booleans and aztec addresses\n        bool_serialization::{BoolSerializationMethods, BOOL_SERIALIZED_LEN},\n        aztec_address_serialization::{AztecAddressSerializationMethods, AZTEC_ADDRESS_SERIALIZED_LEN},\n        field_serialization::{ FieldSerializationMethods, FIELD_SERIALIZED_LEN},\n    }, \n    types::address::{AztecAddress},\n    constants_gen::EMPTY_NULLIFIED_COMMITMENT,\n    };\n\n    struct Storage {\n    admin: PublicState<AztecAddress, AZTEC_ADDRESS_SERIALIZED_LEN>, // admin can end vote\n    tally: Map<PublicState<Field, FIELD_SERIALIZED_LEN>>, // we will store vote as key and number of votes as value\n    voteEnded: PublicState<bool, BOOL_SERIALIZED_LEN>, // voteEnded is boolean\n}\n\n    impl Storage {\n    fn init(context: Context) -> Self {\n        Storage {\n         admin: PublicState::new(\n            context, \n            1, // storage slot. this can be anything except 0. it is hashed, and hash on 0 = 0\n            AztecAddressSerializationMethods,\n        ), \n        tally: Map::new(\n            context, \n            2, \n            |context, slot| {\n            PublicState::new(\n                context,\n                slot, \n                FieldSerializationMethods,\n            )\n            },\n         ),\n          voteEnded: PublicState::new(\n            context, \n            3, \n            BoolSerializationMethods,\n        )\n        } }\n    }\n\n    #[aztec(private)] // annotation to mark function as private and expose private context\n    fn constructor(admin: AztecAddress)\n{\n        // called when contract is deployed\n        context.call_public_function(\n            // we cannot update public state directly from private function but we can call public function (which queues it)\n            context.this_address(),// address that calls public function. here we are using contract address for privacy\n            compute_selector(\"_initialize((Field))\"), // selector of  set_admin()\n            [admin.address] // parameters for set_admin()\n        );\n    }\n\n    #[aztec(private)] // annotation to mark function as public and expose private context\n    fn cast_vote(voteId: Field)\n{\n        // docs:end:cast_vote\n        // docs:start:nullifier\n        let secret = get_secret_key(context.msg_sender());\n        // get secret key of caller of function\n        let nullifier = dep::std::hash::pedersen_hash([context.msg_sender(), secret.low, secret.high]);\n        // compute nullifier with this secret key so others can't descrypt it\n        context.push_new_nullifier(nullifier, EMPTY_NULLIFIED_COMMITMENT);\n\n        // push nullifier\n        // docs:end:nullifier\n        // docs:start:call_add_to_tally_public\n        context.call_public_function(context.this_address(), compute_selector(\"add_to_tally_public(Field)\"), [voteId]);\n    }\n\n    #[aztec(public)]\n    internal fn add_to_tally_public(voteId: Field) {\n        assert(storage.voteEnded.read() == false, \"Vote has ended\");\n        // assert that vote has not ended\n        let new_tally = storage.tally.at(voteId).read() + 1;\n        storage.tally.at(voteId).write(new_tally);\n    }\n\n    #[aztec(public)] \n    fn end_vote() {\n        assert(storage.admin.read().eq(AztecAddress::new(context.msg_sender())), \"Only admin can end votes\"); // assert that caller is admin\n        storage.voteEnded.write(true);\n    }\n\n    #[aztec(public)] // annotation to mark function as public and expose public context\n    internal fn _initialize(admin: AztecAddress)\n{\n        // internal - can only be called by contract\n        storage.admin.write(admin);\n        storage.voteEnded.write(false);\n    }\n\n    unconstrained fn get_vote(voteId: Field) -> Field {\n        storage.tally.at(voteId).read()\n    }\n\n    unconstrained fn compute_note_hash_and_nullifier(contract_address: Field, nonce: Field, storage_slot: Field, serialized_note: [Field; 0]) -> [Field; 4] {\n        [0, 0, 0, 0]\n    }\n}\n",
+        "path": "/home/josh/Documents/test/private-voting/private_voting/src/main.nr"
+      },
+      "3": {
+        "source": "mod poseidon;\nmod mimc;\n\n#[foreign(sha256)]\npub fn sha256<N>(_input : [u8; N]) -> [u8; 32] {}\n\n#[foreign(blake2s)]\npub fn blake2s<N>(_input : [u8; N]) -> [u8; 32] {}\n\nstruct PedersenPoint {\n   x : Field,\n   y : Field,\n}\n\npub fn pedersen_commitment<N>(input : [Field; N]) -> PedersenPoint {\n    pedersen_commitment_with_separator(input, 0)\n}\n\n#[foreign(pedersen)]\npub fn __pedersen_commitment_with_separator<N>(_input : [Field; N], _separator : u32) -> [Field; 2] {}\n\npub fn pedersen_commitment_with_separator<N>(input : [Field; N], separator : u32) -> PedersenPoint {\n  let values = __pedersen_commitment_with_separator(input, separator);\n  PedersenPoint {\n     x: values[0],\n     y: values[1],\n  }\n}\n\npub fn pedersen_hash<N>(input : [Field; N]) -> Field {\n    pedersen_hash_with_separator(input, 0)\n}\n\n#[foreign(pedersen_hash)]\npub fn pedersen_hash_with_separator<N>(_input : [Field; N], _separator : u32) -> Field {}\n\npub fn hash_to_field<N>(_input : [Field; N]) -> Field {\n    let mut inputs_as_bytes = [];\n    \n    for i in 0..N {\n        let input_bytes = _input[i].to_le_bytes(32);\n        for i in 0..32 {\n            inputs_as_bytes = inputs_as_bytes.push_back(input_bytes[i]);\n        }\n    }\n\n    let hashed_input = blake2s(inputs_as_bytes);\n    crate::field::bytes32_to_field(hashed_input)\n}\n\n#[foreign(keccak256)]\npub fn keccak256<N>(_input : [u8; N], _message_size: u32) -> [u8; 32] {}\n\n",
+        "path": "std/hash.nr"
+      },
+      "16": {
+        "source": "struct GrumpkinScalar {\n    low: Field,\n    high: Field,\n}\n\nimpl GrumpkinScalar {\n    pub fn new(low: Field, high: Field) -> Self {\n        // TODO: check that the low and high value fit within the grumpkin modulus\n        GrumpkinScalar { low, high }\n    }\n}\n\nglobal GRUMPKIN_SCALAR_SERIALIZED_LEN: Field = 2;\n\npub fn deserialize_grumpkin_scalar(fields: [Field; GRUMPKIN_SCALAR_SERIALIZED_LEN]) -> GrumpkinScalar {\n    GrumpkinScalar { low: fields[0], high: fields[1] }\n}\n\npub fn serialize_grumpkin_scalar(scalar: GrumpkinScalar) -> [Field; GRUMPKIN_SCALAR_SERIALIZED_LEN] {\n    [scalar.low, scalar.high]\n}\n",
+        "path": "std/grumpkin_scalar.nr"
+      },
+      "17": {
+        "source": "use crate::grumpkin_scalar::GrumpkinScalar;\nuse crate::scalar_mul::fixed_base_embedded_curve;\n\npub fn grumpkin_fixed_base(scalar: GrumpkinScalar) -> [Field; 2] {\n    // TODO: this should use both the low and high limbs to do the scalar multiplication\n    fixed_base_embedded_curve(scalar.low, scalar.high)\n}\n",
+        "path": "std/grumpkin_scalar_mul.nr"
+      },
+      "32": {
+        "source": "struct Option<T> {\n    _is_some: bool,\n    _value: T,\n}\n\nimpl<T> Option<T> {\n    /// Constructs a None value\n    pub fn none() -> Self {\n        Self { _is_some: false, _value: crate::unsafe::zeroed() }\n    }\n\n    /// Constructs a Some wrapper around the given value\n    pub fn some(_value: T) -> Self {\n        Self { _is_some: true, _value }\n    }\n\n    /// True if this Option is None\n    pub fn is_none(self) -> bool {\n        !self._is_some\n    }\n\n    /// True if this Option is Some\n    pub fn is_some(self) -> bool {\n        self._is_some\n    }\n\n    /// Asserts `self.is_some()` and returns the wrapped value.\n    pub fn unwrap(self) -> T {\n        assert(self._is_some);\n        self._value\n    }\n\n    /// Returns the inner value without asserting `self.is_some()`\n    /// Note that if `self` is `None`, there is no guarantee what value will be returned,\n    /// only that it will be of type `T`.\n    pub fn unwrap_unchecked(self) -> T {\n        self._value\n    }\n\n    /// Returns the wrapped value if `self.is_some()`. Otherwise, returns the given default value.\n    pub fn unwrap_or(self, default: T) -> T {\n        if self._is_some {\n            self._value\n        } else {\n            default\n        }\n    }\n\n    /// Returns the wrapped value if `self.is_some()`. Otherwise, calls the given function to return\n    /// a default value.\n    pub fn unwrap_or_else<Env>(self, default: fn[Env]() -> T) -> T {\n        if self._is_some {\n            self._value\n        } else {\n            default()\n        }\n    }\n\n    /// If self is `Some(x)`, this returns `Some(f(x))`. Otherwise, this returns `None`.\n    pub fn map<U, Env>(self, f: fn[Env](T) -> U) -> Option<U> {\n        if self._is_some {\n            Option::some(f(self._value))\n        } else {\n            Option::none()\n        }\n    }\n\n    /// If self is `Some(x)`, this returns `f(x)`. Otherwise, this returns the given default value.\n    pub fn map_or<U, Env>(self, default: U, f: fn[Env](T) -> U) -> U {\n        if self._is_some {\n            f(self._value)\n        } else {\n            default\n        }\n    }\n\n    /// If self is `Some(x)`, this returns `f(x)`. Otherwise, this returns `default()`.\n    pub fn map_or_else<U, Env1, Env2>(self, default: fn[Env1]() -> U, f: fn[Env2](T) -> U) -> U {\n        if self._is_some {\n            f(self._value)\n        } else {\n            default()\n        }\n    }\n\n    /// Returns None if self is None. Otherwise, this returns `other`.\n    pub fn and(self, other: Self) -> Self {\n        if self.is_none() {\n            Option::none()\n        } else {\n            other\n        }\n    }\n\n    /// If self is None, this returns None. Otherwise, this calls the given function\n    /// with the Some value contained within self, and returns the result of that call.\n    ///\n    /// In some languages this function is called `flat_map` or `bind`.\n    pub fn and_then<U, Env>(self, f: fn[Env](T) -> Option<U>) -> Option<U> {\n        if self._is_some {\n            f(self._value)\n        } else {\n            Option::none()\n        }\n    }\n\n    /// If self is Some, return self. Otherwise, return `other`.\n    pub fn or(self, other: Self) -> Self {\n        if self._is_some {\n            self\n        } else {\n            other\n        }\n    }\n\n    /// If self is Some, return self. Otherwise, return `default()`.\n    pub fn or_else<U, Env>(self, default: fn[Env]() -> Self) -> Self {\n        if self._is_some {\n            self\n        } else {\n            default()\n        }\n    }\n\n    // If only one of the two Options is Some, return that option.\n    // Otherwise, if both options are Some or both are None, None is returned.\n    pub fn xor(self, other: Self) -> Self {\n        if self._is_some {\n            if other._is_some {\n                Option::none()\n            } else {\n                self\n            }\n        } else if other._is_some {\n            other\n        } else {\n            Option::none()\n        }\n    }\n\n    /// Returns `Some(x)` if self is `Some(x)` and `predicate(x)` is true.\n    /// Otherwise, this returns `None`\n    pub fn filter<Env>(self, predicate: fn[Env](T) -> bool) -> Self {\n        if self._is_some {\n            if predicate(self._value) {\n                self\n            } else {\n                Option::none()\n            }\n        } else {\n            Option::none()\n        }\n    }\n\n    /// Flattens an Option<Option<T>> into a Option<T>.\n    /// This returns None if the outer Option is None. Otherwise, this returns the inner Option.\n    pub fn flatten(option: Option<Option<T>>) -> Option<T> {\n        if option._is_some {\n            option._value\n        } else {\n            Option::none()\n        }\n    }\n}\n",
+        "path": "std/option.nr"
+      },
+      "35": {
+        "source": "use crate::constants_gen::{\n    RETURN_VALUES_LENGTH,\n    MAX_READ_REQUESTS_PER_CALL,\n    MAX_PENDING_READ_REQUESTS_PER_CALL,\n    MAX_NEW_COMMITMENTS_PER_CALL,\n    MAX_NEW_NULLIFIERS_PER_CALL,\n    MAX_PRIVATE_CALL_STACK_LENGTH_PER_CALL,\n    MAX_PUBLIC_CALL_STACK_LENGTH_PER_CALL,\n    MAX_NEW_L2_TO_L1_MSGS_PER_CALL,\n    NUM_FIELDS_PER_SHA256,\n    MAX_PUBLIC_DATA_UPDATE_REQUESTS_PER_CALL,\n    MAX_PUBLIC_DATA_READS_PER_CALL,\n    GENERATOR_INDEX__FUNCTION_ARGS,\n    HISTORIC_BLOCK_DATA_LENGTH,\n    CONTRACT_DEPLOYMENT_DATA_LENGTH,\n    CALL_CONTEXT_LENGTH,\n    PRIVATE_CIRCUIT_PUBLIC_INPUTS_LENGTH,\n    PRIVATE_CIRCUIT_PUBLIC_INPUTS_HASH_INPUT_LENGTH,\n    CONTRACT_STORAGE_UPDATE_REQUEST_LENGTH,\n    CONTRACT_STORAGE_READ_LENGTH,\n    PUBLIC_CIRCUIT_PUBLIC_INPUTS_LENGTH,\n    PUBLIC_CIRCUIT_PUBLIC_INPUTS_HASH_INPUT_LENGTH,\n    GENERATOR_INDEX__PUBLIC_CIRCUIT_PUBLIC_INPUTS,\n    GENERATOR_INDEX__FUNCTION_DATA,\n    GENERATOR_INDEX__PUBLIC_DATA_READ,\n    GENERATOR_INDEX__PUBLIC_DATA_UPDATE_REQUEST,\n    GENERATOR_INDEX__CALL_CONTEXT,\n    GENERATOR_INDEX__PRIVATE_CIRCUIT_PUBLIC_INPUTS,\n    GENERATOR_INDEX__CONTRACT_DEPLOYMENT_DATA,\n};\n\nuse crate::oracle::debug_log;\nuse crate::types::vec::BoundedVec;\nuse crate::types::point::Point;\nuse crate::hash::pedersen_hash;\n\n// docs:start:private-global-variables\nstruct PrivateGlobalVariables {\n    chain_id: Field,\n    version: Field,\n}\n// docs:end:private-global-variables\n\nimpl PrivateGlobalVariables {\n    fn serialize(self) -> [Field; 2] {\n        [self.chain_id, self.version]\n    }\n}\n\n// docs:start:public-global-variables\nstruct PublicGlobalVariables {\n    chain_id: Field,\n    version: Field,\n    block_number: Field,\n    timestamp: Field,\n}\n// docs:end:public-global-variables\n\nimpl PublicGlobalVariables {\n    fn serialize(self) -> [Field; 4] {\n        [self.chain_id, self.version, self.block_number, self.timestamp]\n    }\n}\n\n// docs:start:contract-deployment-data\nstruct ContractDeploymentData {\n    deployer_public_key: Point,\n    constructor_vk_hash : Field,\n    function_tree_root : Field,\n    contract_address_salt : Field,\n    portal_contract_address : Field,\n}\n// docs:end:contract-deployment-data\n\nimpl ContractDeploymentData {\n    fn serialize(self) -> [Field; CONTRACT_DEPLOYMENT_DATA_LENGTH] {\n        [\n            self.deployer_public_key.x,\n            self.deployer_public_key.y,\n            self.constructor_vk_hash,\n            self.function_tree_root,\n            self.contract_address_salt,\n            self.portal_contract_address,\n        ]\n    }\n\n    fn hash(self) -> Field {\n        pedersen_hash(self.serialize(), GENERATOR_INDEX__CONTRACT_DEPLOYMENT_DATA)\n    }\n}\n\n// PrivateContextInputs are expected to be provided to each private function\n// docs:start:private-context-inputs\nstruct PrivateContextInputs {\n    call_context : CallContext,\n    block_data: HistoricBlockData,\n    contract_deployment_data: ContractDeploymentData,\n    private_global_variables: PrivateGlobalVariables,\n}\n// docs:end:private-context-inputs\n\n// PublicContextInputs are expected to be provided to each public function\n// docs:start:public-context-inputs\nstruct PublicContextInputs {\n    call_context: CallContext,\n    block_data: HistoricBlockData,\n\n    public_global_variables: PublicGlobalVariables,\n}\n// docs:end:public-context-inputs\n\n// docs:start:call-context\nstruct CallContext {\n    msg_sender : Field,\n    storage_contract_address : Field,\n    portal_contract_address : Field,\n    function_selector: Field,\n\n    is_delegate_call : bool,\n    is_static_call : bool,\n    is_contract_deployment: bool,\n}\n// docs:end:call-context\n\nimpl CallContext {\n    fn serialize(self) -> [Field; CALL_CONTEXT_LENGTH] {\n        [\n            self.msg_sender,\n            self.storage_contract_address,\n            self.portal_contract_address,\n            self.function_selector,\n            self.is_delegate_call as Field,\n            self.is_static_call as Field,\n            self.is_contract_deployment as Field,\n        ]\n    }\n\n    fn hash(self) -> Field {\n        pedersen_hash(self.serialize(), GENERATOR_INDEX__CALL_CONTEXT)\n    }\n}\n\n// docs:start:historic-block-data\nstruct HistoricBlockData {\n    note_hash_tree_root : Field,\n    nullifier_tree_root : Field,\n    contract_tree_root : Field,\n    l1_to_l2_messages_tree_root : Field,\n    blocks_tree_root: Field,\n    public_data_tree_root: Field,\n    global_variables_hash: Field,\n}\n// docs:end:historic-block-data\n\nimpl HistoricBlockData {\n    // NOTE: this order must match the order in `private_circuit_public_inputs.hpp`\n    pub fn serialize(self) -> [Field; HISTORIC_BLOCK_DATA_LENGTH] {\n        [\n            self.note_hash_tree_root,\n            self.nullifier_tree_root,\n            self.contract_tree_root,\n            self.l1_to_l2_messages_tree_root,\n            self.blocks_tree_root,\n            self.public_data_tree_root,\n            self.global_variables_hash,\n        ]\n    }\n\n    pub fn empty() -> Self {\n        Self { note_hash_tree_root: 0, nullifier_tree_root: 0, contract_tree_root: 0, l1_to_l2_messages_tree_root: 0, blocks_tree_root: 0, public_data_tree_root: 0, global_variables_hash: 0 }\n    }\n}\n\nstruct FunctionData {\n    function_selector: Field,\n    is_internal: bool,\n    is_private: bool,\n    is_constructor: bool,\n}\n\nimpl FunctionData {\n    fn hash(self) -> Field {\n        pedersen_hash([\n            self.function_selector,\n            self.is_internal as Field,\n            self.is_private as Field,\n            self.is_constructor as Field,\n        ], GENERATOR_INDEX__FUNCTION_DATA)\n    }\n}\n\nstruct PrivateCircuitPublicInputs {\n    call_context: CallContext,\n    args_hash: Field,\n    return_values: [Field; RETURN_VALUES_LENGTH],\n    read_requests: [Field; crate::abi::MAX_READ_REQUESTS_PER_CALL],\n    pending_read_requests: [Field; crate::abi::MAX_PENDING_READ_REQUESTS_PER_CALL],\n    new_commitments: [Field; MAX_NEW_COMMITMENTS_PER_CALL],\n    new_nullifiers: [Field; MAX_NEW_NULLIFIERS_PER_CALL],\n    nullified_commitments: [Field; MAX_NEW_NULLIFIERS_PER_CALL],\n    private_call_stack: [Field; MAX_PRIVATE_CALL_STACK_LENGTH_PER_CALL],\n    public_call_stack: [Field; MAX_PUBLIC_CALL_STACK_LENGTH_PER_CALL],\n    new_l2_to_l1_msgs: [Field; MAX_NEW_L2_TO_L1_MSGS_PER_CALL],\n    // Explore introducing a new type like uint256 (similar to Point), so it's more explicit that\n    // we're talking about a single number backed by two field elements.\n    encrypted_logs_hash: [Field; NUM_FIELDS_PER_SHA256],\n    unencrypted_logs_hash: [Field; NUM_FIELDS_PER_SHA256],\n    encrypted_log_preimages_length: Field,\n    unencrypted_log_preimages_length: Field,\n    block_data: HistoricBlockData,\n    contract_deployment_data: ContractDeploymentData,\n    chain_id: Field,\n    version: Field,\n}\n\nimpl PrivateCircuitPublicInputs {\n    fn hash(self) -> Field {\n        let mut fields: BoundedVec<Field, PRIVATE_CIRCUIT_PUBLIC_INPUTS_HASH_INPUT_LENGTH> = BoundedVec::new(0); \n        fields.push(self.call_context.hash());\n        fields.push(self.args_hash);\n        fields.push_array(self.return_values);\n        fields.push_array(self.read_requests);\n        fields.push_array(self.pending_read_requests);\n        fields.push_array(self.new_commitments);\n        fields.push_array(self.new_nullifiers);\n        fields.push_array(self.nullified_commitments);\n        fields.push_array(self.private_call_stack);\n        fields.push_array(self.public_call_stack);\n        fields.push_array(self.new_l2_to_l1_msgs);\n        fields.push_array(self.encrypted_logs_hash);\n        fields.push_array(self.unencrypted_logs_hash);\n        fields.push(self.encrypted_log_preimages_length);\n        fields.push(self.unencrypted_log_preimages_length);\n        fields.push_array(self.block_data.serialize());\n        fields.push(self.contract_deployment_data.hash());\n        fields.push(self.chain_id);\n        fields.push(self.version);\n\n        pedersen_hash(fields.storage, GENERATOR_INDEX__PRIVATE_CIRCUIT_PUBLIC_INPUTS)\n    }\n\n    fn serialize(self) -> [Field; PRIVATE_CIRCUIT_PUBLIC_INPUTS_LENGTH] {\n        let mut fields: BoundedVec<Field, PRIVATE_CIRCUIT_PUBLIC_INPUTS_LENGTH> = BoundedVec::new(0); \n        fields.push_array(self.call_context.serialize());\n        fields.push(self.args_hash);\n        fields.push_array(self.return_values);\n        fields.push_array(self.read_requests);\n        fields.push_array(self.pending_read_requests);\n        fields.push_array(self.new_commitments);\n        fields.push_array(self.new_nullifiers);\n        fields.push_array(self.private_call_stack);\n        fields.push_array(self.public_call_stack);\n        fields.push_array(self.new_l2_to_l1_msgs);\n        fields.push_array(self.encrypted_logs_hash);\n        fields.push_array(self.unencrypted_logs_hash);\n        fields.push(self.encrypted_log_preimages_length);\n        fields.push(self.unencrypted_log_preimages_length);\n        fields.push_array(self.block_data.serialize());\n        fields.push_array(self.contract_deployment_data.serialize());\n        fields.push(self.chain_id);\n        fields.push(self.version);\n        fields.storage\n    }\n}\n\nstruct ContractStorageRead {\n    storage_slot: Field,\n    value: Field,\n}\n\nimpl ContractStorageRead {\n    pub fn serialize(self) -> [Field; CONTRACT_STORAGE_READ_LENGTH] {\n        [self.storage_slot, self.value]\n    }\n\n    pub fn hash(self) -> Field {\n        pedersen_hash(self.serialize(), GENERATOR_INDEX__PUBLIC_DATA_READ)\n    }\n\n    pub fn empty() -> Self {\n        Self { storage_slot: 0, value: 0 }\n    }\n}\n\nstruct ContractStorageUpdateRequest {\n    storage_slot: Field,\n    old_value: Field,\n    new_value: Field,\n}\n\nimpl ContractStorageUpdateRequest {\n    pub fn serialize(self) -> [Field; CONTRACT_STORAGE_UPDATE_REQUEST_LENGTH] {\n        [self.storage_slot, self.old_value, self.new_value]\n    }\n\n    pub fn hash(self) -> Field {\n        pedersen_hash(self.serialize(), GENERATOR_INDEX__PUBLIC_DATA_UPDATE_REQUEST)\n    }\n\n    pub fn empty() -> Self {\n        Self { storage_slot: 0, old_value: 0, new_value: 0 }\n    }\n}\n\n\nstruct PublicCircuitPublicInputs {\n    call_context: CallContext,\n    args_hash: Field,\n    return_values: [Field; RETURN_VALUES_LENGTH],\n    contract_storage_update_requests: [ContractStorageUpdateRequest; MAX_PUBLIC_DATA_UPDATE_REQUESTS_PER_CALL],\n    contract_storage_read: [ContractStorageRead; MAX_PUBLIC_DATA_READS_PER_CALL],\n    public_call_stack: [Field; MAX_PUBLIC_CALL_STACK_LENGTH_PER_CALL],\n    new_commitments: [Field; MAX_NEW_COMMITMENTS_PER_CALL],\n    new_nullifiers: [Field; crate::abi::MAX_NEW_NULLIFIERS_PER_CALL],\n    new_l2_to_l1_msgs: [Field; crate::abi::MAX_NEW_L2_TO_L1_MSGS_PER_CALL],\n    unencrypted_logs_hash: [Field; NUM_FIELDS_PER_SHA256],\n    unencrypted_log_preimages_length: Field,\n    block_data: HistoricBlockData,\n    prover_address: Field,\n}\n\nimpl PublicCircuitPublicInputs {\n    \n    pub fn hash(self) -> Field {\n        let mut inputs: BoundedVec<Field, PUBLIC_CIRCUIT_PUBLIC_INPUTS_HASH_INPUT_LENGTH> = BoundedVec::new(0);\n        inputs.push(self.call_context.hash());\n        inputs.push(self.args_hash);\n        inputs.push_array(self.return_values);\n        for i in 0..MAX_PUBLIC_DATA_UPDATE_REQUESTS_PER_CALL {\n            inputs.push(self.contract_storage_update_requests[i].hash());\n        }\n        for i in 0..MAX_PUBLIC_DATA_READS_PER_CALL {\n            inputs.push(self.contract_storage_read[i].hash());\n        }\n        inputs.push_array(self.public_call_stack);\n        inputs.push_array(self.new_commitments);\n        inputs.push_array(self.new_nullifiers);\n        inputs.push_array(self.new_l2_to_l1_msgs);\n\n        inputs.push_array(self.unencrypted_logs_hash);\n        inputs.push(self.unencrypted_log_preimages_length);\n        inputs.push_array(self.block_data.serialize());\n        inputs.push(self.prover_address);\n\n        pedersen_hash(inputs.storage, GENERATOR_INDEX__PUBLIC_CIRCUIT_PUBLIC_INPUTS)\n    }\n\n    pub fn serialize(self) -> [Field; PUBLIC_CIRCUIT_PUBLIC_INPUTS_LENGTH] {\n        let mut fields: BoundedVec<Field, PUBLIC_CIRCUIT_PUBLIC_INPUTS_LENGTH> = BoundedVec::new(0); \n        fields.push_array(self.call_context.serialize());   \n        fields.push(self.args_hash);\n        fields.push_array(self.return_values);\n        for i in 0..MAX_PUBLIC_DATA_UPDATE_REQUESTS_PER_CALL {\n            fields.push_array(self.contract_storage_update_requests[i].serialize());\n        }\n        for i in 0..MAX_PUBLIC_DATA_READS_PER_CALL {\n            fields.push_array(self.contract_storage_read[i].serialize());\n        }\n        fields.push_array(self.public_call_stack);\n        fields.push_array(self.new_commitments);\n        fields.push_array(self.new_nullifiers);\n        fields.push_array(self.new_l2_to_l1_msgs);\n        fields.push_array(self.unencrypted_logs_hash);\n        fields.push(self.unencrypted_log_preimages_length);\n        fields.push_array(self.block_data.serialize());\n        fields.push(self.prover_address);\n        fields.storage\n    }\n}\n\nstruct Hasher {\n    fields: [Field],\n}\n\nimpl Hasher {\n    pub fn new()-> Self {\n        Self { fields: [] }\n    }\n\n    pub fn add(&mut self, field: Field) {\n        self.fields = self.fields.push_back(field);\n    }\n\n    pub fn add_multiple<N>(&mut self, fields: [Field; N]) {\n        for i in 0..N {\n            self.fields = self.fields.push_back(fields[i]);\n        }\n    }\n\n    pub fn hash(self) -> Field {\n        hash_args(self.fields)\n    }\n}\n\nglobal ARGS_HASH_CHUNK_LENGTH: u32 = 32;\nglobal ARGS_HASH_CHUNK_COUNT: u32 = 16;\n\npub fn hash_args<N>(args: [Field; N]) -> Field {\n    if args.len() == 0 {\n        0\n    } else {\n        let mut chunks_hashes = [0; ARGS_HASH_CHUNK_COUNT];\n        for i in 0..ARGS_HASH_CHUNK_COUNT {\n            let mut chunk_hash = 0;\n            let start_chunk_index = i * ARGS_HASH_CHUNK_LENGTH;\n            if start_chunk_index < (args.len() as u32) {\n                let mut chunk_args = [0; ARGS_HASH_CHUNK_LENGTH];\n                for j in 0..ARGS_HASH_CHUNK_LENGTH {\n                    let item_index = i * ARGS_HASH_CHUNK_LENGTH + j;\n                    if item_index < (args.len() as u32) {\n                        chunk_args[j] = args[item_index];\n                    }\n                }\n                chunk_hash = pedersen_hash(chunk_args, GENERATOR_INDEX__FUNCTION_ARGS);\n            }\n            chunks_hashes[i] = chunk_hash;\n        }\n        pedersen_hash(chunks_hashes, GENERATOR_INDEX__FUNCTION_ARGS)\n    }\n}\n",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/abi.nr"
+      },
+      "36": {
+        "source": "use crate::constants_gen::GENERATOR_INDEX__CONTRACT_ADDRESS;\nuse crate::hash::pedersen_hash;\n\npub fn compute_address(pub_key_x: Field, pub_key_y: Field, partial_address: Field) -> Field {\n  pedersen_hash([pub_key_x, pub_key_y, partial_address], GENERATOR_INDEX__CONTRACT_ADDRESS)\n}",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/address.nr"
+      },
+      "38": {
+        "source": "use crate::constants_gen::{\n    EMPTY_NULLIFIED_COMMITMENT,\n    MAX_NEW_COMMITMENTS_PER_CALL,\n    MAX_NEW_L2_TO_L1_MSGS_PER_CALL,\n    MAX_NEW_NULLIFIERS_PER_CALL,\n    MAX_PRIVATE_CALL_STACK_LENGTH_PER_CALL,\n    MAX_PUBLIC_CALL_STACK_LENGTH_PER_CALL,\n    MAX_PUBLIC_DATA_READS_PER_CALL,\n    MAX_PUBLIC_DATA_UPDATE_REQUESTS_PER_CALL,\n    MAX_READ_REQUESTS_PER_CALL,\n    MAX_PENDING_READ_REQUESTS_PER_CALL,\n    NUM_FIELDS_PER_SHA256,\n    RETURN_VALUES_LENGTH,\n};\n\nuse crate::abi;\n\nuse crate::abi::{\n    hash_args,\n    CallContext,\n    ContractDeploymentData,\n    HistoricBlockData,\n    FunctionData,\n    PrivateCircuitPublicInputs,\n    PublicCircuitPublicInputs,\n};\n\n// TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n// use dep::std::collections::vec::Vec;\n\n// l1 to l2 messaging\nuse crate::messaging::process_l1_to_l2_message;\nuse crate::private_call_stack_item::PrivateCallStackItem;\nuse crate::public_call_stack_item::PublicCallStackItem;\n\nuse crate::types::{\n    vec::BoundedVec,\n    point::Point,\n};\n\nuse crate::utils::arr_copy_slice;\n\nuse crate::oracle::{\n    arguments,\n    call_private_function::call_private_function_internal,\n    public_call::call_public_function_internal,\n    enqueue_public_function_call::enqueue_public_function_call_internal,\n    context::get_portal_address,\n};\n\nuse dep::std::option::Option;\n\n// When finished, one can call .finish() to convert back to the abi\nstruct PrivateContext {\n    // docs:start:private-context\n    inputs: abi::PrivateContextInputs,\n\n    args_hash : Field,\n    return_values : BoundedVec<Field, RETURN_VALUES_LENGTH>,\n\n    read_requests: BoundedVec<Field, MAX_READ_REQUESTS_PER_CALL>,\n    pending_read_requests: BoundedVec<Field, MAX_PENDING_READ_REQUESTS_PER_CALL>,\n\n    new_commitments: BoundedVec<Field, MAX_NEW_COMMITMENTS_PER_CALL>,\n    new_nullifiers: BoundedVec<Field, MAX_NEW_NULLIFIERS_PER_CALL>,\n    nullified_commitments: BoundedVec<Field, MAX_NEW_NULLIFIERS_PER_CALL>,\n\n    private_call_stack : BoundedVec<Field, MAX_PRIVATE_CALL_STACK_LENGTH_PER_CALL>,\n    public_call_stack : BoundedVec<Field, MAX_PUBLIC_CALL_STACK_LENGTH_PER_CALL>,\n    new_l2_to_l1_msgs : BoundedVec<Field, MAX_NEW_L2_TO_L1_MSGS_PER_CALL>,\n    // docs:end:private-context\n\n    block_data: HistoricBlockData,\n\n    // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n    // encrypted_logs_preimages: Vec<Field>,\n    // unencrypted_logs_preimages: Vec<Field>,\n}\n\nimpl PrivateContext {\n    pub fn new(inputs: abi::PrivateContextInputs, args_hash: Field) -> PrivateContext {\n        PrivateContext {\n            inputs: inputs,\n\n            args_hash: args_hash,\n            return_values: BoundedVec::new(0),\n\n            read_requests: BoundedVec::new(0),\n            pending_read_requests: BoundedVec::new(0),\n\n            new_commitments: BoundedVec::new(0),\n            new_nullifiers: BoundedVec::new(0),\n            nullified_commitments: BoundedVec::new(0),\n\n            block_data: inputs.block_data,\n\n            private_call_stack: BoundedVec::new(0),\n            public_call_stack: BoundedVec::new(0),\n            new_l2_to_l1_msgs: BoundedVec::new(0),\n\n            // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n            // encrypted_logs_preimages: Vec::new(),\n            // unencrypted_logs_preimages: Vec::new(),\n        }\n    }\n\n    pub fn msg_sender(self) -> Field {\n        self.inputs.call_context.msg_sender\n    }\n\n    pub fn this_address(self) -> Field {\n        self.inputs.call_context.storage_contract_address\n    }\n\n    pub fn this_portal_address(self) -> Field {\n        self.inputs.call_context.portal_contract_address\n    }\n\n    pub fn chain_id(self) -> Field {\n        self.inputs.private_global_variables.chain_id\n    }\n\n    pub fn version(self) -> Field {\n        self.inputs.private_global_variables.version\n    }\n\n    pub fn selector(self) -> Field {\n        self.inputs.call_context.function_selector\n    }\n\n    pub fn finish(self) -> abi::PrivateCircuitPublicInputs {\n        // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n        let encrypted_logs_hash = [0; NUM_FIELDS_PER_SHA256];\n        let unencrypted_logs_hash = [0; NUM_FIELDS_PER_SHA256];\n        let encrypted_log_preimages_length = 0;\n        let unencrypted_log_preimages_length = 0;\n\n        let priv_circuit_pub_inputs = abi::PrivateCircuitPublicInputs {\n            call_context: self.inputs.call_context,\n            args_hash: self.args_hash,\n            return_values: self.return_values.storage,\n            read_requests: self.read_requests.storage,\n            pending_read_requests: self.pending_read_requests.storage,\n            new_commitments: self.new_commitments.storage,\n            new_nullifiers: self.new_nullifiers.storage,\n            nullified_commitments: self.nullified_commitments.storage,\n            private_call_stack: self.private_call_stack.storage,\n            public_call_stack: self.public_call_stack.storage,\n            new_l2_to_l1_msgs: self.new_l2_to_l1_msgs.storage,\n            encrypted_logs_hash: encrypted_logs_hash,\n            unencrypted_logs_hash: unencrypted_logs_hash,\n            encrypted_log_preimages_length: encrypted_log_preimages_length,\n            unencrypted_log_preimages_length: unencrypted_log_preimages_length,\n            block_data: self.block_data,\n            contract_deployment_data: self.inputs.contract_deployment_data,\n            chain_id: self.inputs.private_global_variables.chain_id,\n            version: self.inputs.private_global_variables.version,\n        };\n        priv_circuit_pub_inputs\n    }\n\n    pub fn push_read_request(&mut self, read_request: Field) {\n        self.read_requests.push(read_request);\n    }\n\n    pub fn push_pending_read_request(&mut self, pending_read_request: Field) {\n        self.pending_read_requests.push(pending_read_request);\n    }\n\n    pub fn push_new_note_hash(&mut self, note_hash: Field) {\n        self.new_commitments.push(note_hash);\n    }\n\n    // We never push a zero nullified_commitment as zero is used to indicate the end\n    // of a field array in private kernel. This routine transparently replaces a\n    // zero value into the special placeholder: EMPTY_NULLIFIED_COMMITMENT.\n    pub fn push_new_nullifier(&mut self, nullifier: Field, nullified_commitment: Field) {\n        self.new_nullifiers.push(nullifier);\n        let mut non_zero_nullified = nullified_commitment;\n        if (non_zero_nullified == 0) {\n            non_zero_nullified = EMPTY_NULLIFIED_COMMITMENT;\n        }\n        self.nullified_commitments.push(non_zero_nullified);\n    }\n\n    // docs:start:context_message_portal\n    pub fn message_portal(&mut self, content: Field) \n    // docs:end:context_message_portal\n    {\n        self.new_l2_to_l1_msgs.push(content);\n    }\n\n    // PrivateContextInputs must be temporarily passed in to prevent too many unknowns\n    // Note this returns self to get around an issue where mutable structs do not maintain mutations unless reassigned\n    // docs:start:context_consume_l1_to_l2_message\n    // docs:start:consume_l1_to_l2_message\n    pub fn consume_l1_to_l2_message(\n        &mut self,\n        msg_key: Field,\n        content: Field,\n        secret: Field\n    ) \n    // docs:end:context_consume_l1_to_l2_message\n    {\n        let nullifier = process_l1_to_l2_message(self.block_data.l1_to_l2_messages_tree_root, self.this_address(), msg_key, content, secret);\n\n        // Push nullifier (and the \"commitment\" corresponding to this can be \"empty\")\n        self.push_new_nullifier(nullifier, EMPTY_NULLIFIED_COMMITMENT)\n    }\n    // docs:end:consume_l1_to_l2_message\n\n    pub fn accumulate_encrypted_logs<N>(&mut self, log: [Field; N]) {\n        let _void1 = self.inputs;\n        let _void2 = log;\n        // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n    }\n\n    pub fn accumulate_unencrypted_logs<T>(&mut self, log: T) {\n        let _void1 = self.inputs;\n        let _void2 = log;\n        // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n    }\n\n    pub fn call_private_function<ARGS_COUNT>(\n        &mut self,\n        contract_address: Field, \n        function_selector: Field, \n        args: [Field; ARGS_COUNT]\n    ) -> [Field; RETURN_VALUES_LENGTH] {\n        let args_hash = hash_args(args);\n        assert(args_hash == arguments::pack_arguments(args));\n        self.call_private_function_with_packed_args(contract_address, function_selector, args_hash)\n    }\n\n    pub fn call_private_function_no_args(\n        &mut self,\n        contract_address: Field, \n        function_selector: Field, \n    ) -> [Field; RETURN_VALUES_LENGTH] {\n        self.call_private_function_with_packed_args(contract_address, function_selector, 0)\n    }\n\n    pub fn call_private_function_with_packed_args(\n        &mut self,\n        contract_address: Field,\n        function_selector: Field,\n        args_hash: Field\n    ) -> [Field; RETURN_VALUES_LENGTH] {\n        let fields = call_private_function_internal(\n            contract_address, \n            function_selector, \n            args_hash\n        );\n        let item = PrivateCallStackItem {\n            contract_address: fields[0],\n            function_data: FunctionData {\n                function_selector: fields[1],\n                is_internal: fields[2] as bool,\n                is_private: fields[3] as bool,\n                is_constructor: fields[4] as bool,\n            },\n            public_inputs: PrivateCircuitPublicInputs {\n                call_context: CallContext {\n                    msg_sender : fields[5],\n                    storage_contract_address : fields[6],\n                    portal_contract_address : fields[7],\n                    function_selector: fields[8], // practically same as fields[1]\n                    is_delegate_call : fields[9] as bool,\n                    is_static_call : fields[10] as bool,\n                    is_contract_deployment: fields[11] as bool,\n                },\n                // TODO handle the offsets as a variable incremented during extraction?\n                args_hash: fields[12],\n                return_values: arr_copy_slice(fields, [0; RETURN_VALUES_LENGTH], 13),\n                read_requests: arr_copy_slice(fields, [0; MAX_READ_REQUESTS_PER_CALL], 17),\n                pending_read_requests: arr_copy_slice(fields, [0; MAX_READ_REQUESTS_PER_CALL], 49),\n                new_commitments: arr_copy_slice(fields, [0; MAX_NEW_COMMITMENTS_PER_CALL], 81),\n                new_nullifiers: arr_copy_slice(fields, [0; MAX_NEW_NULLIFIERS_PER_CALL], 97),\n                nullified_commitments: arr_copy_slice(fields, [0; MAX_NEW_NULLIFIERS_PER_CALL], 113),\n                private_call_stack: arr_copy_slice(fields, [0; MAX_PRIVATE_CALL_STACK_LENGTH_PER_CALL], 129),\n                public_call_stack: arr_copy_slice(fields, [0; MAX_PUBLIC_CALL_STACK_LENGTH_PER_CALL], 133),\n                new_l2_to_l1_msgs: arr_copy_slice(fields, [0; MAX_NEW_L2_TO_L1_MSGS_PER_CALL], 137),\n                encrypted_logs_hash: arr_copy_slice(fields, [0; NUM_FIELDS_PER_SHA256], 139),\n                unencrypted_logs_hash: arr_copy_slice(fields, [0; NUM_FIELDS_PER_SHA256], 141),\n                encrypted_log_preimages_length: fields[143],\n                unencrypted_log_preimages_length: fields[144],\n                block_data: HistoricBlockData {\n                    // Must match order in `private_circuit_public_inputs.hpp`\n                    note_hash_tree_root : fields[145],\n                    nullifier_tree_root : fields[146],\n                    contract_tree_root : fields[147],\n                    l1_to_l2_messages_tree_root : fields[148],\n                    blocks_tree_root : fields[149],\n                    public_data_tree_root: fields[150],\n                    global_variables_hash: fields[151],\n                },\n                contract_deployment_data: ContractDeploymentData {\n                    deployer_public_key: Point::new(fields[152], fields[153]),\n                    constructor_vk_hash : fields[154],\n                    function_tree_root : fields[155],\n                    contract_address_salt : fields[156],\n                    portal_contract_address : fields[157],\n                },\n                chain_id: fields[158],\n                version: fields[159],\n            },\n            is_execution_request: fields[160] as bool,\n        };\n        assert(contract_address == item.contract_address);\n        assert(function_selector == item.function_data.function_selector);\n\n        assert(args_hash == item.public_inputs.args_hash);\n\n        assert(item.is_execution_request == false);\n\n        // Assert that the call context of the enqueued call generated by the oracle matches our request.\n        // We are issuing a regular call which is not delegate, static, or deployment. We also constrain\n        // the msg_sender in the nested call to be equal to our address, and the execution context address\n        // for the nested call to be equal to the address we actually called.\n        assert(item.public_inputs.call_context.is_delegate_call == false);\n        assert(item.public_inputs.call_context.is_static_call == false);\n        assert(item.public_inputs.call_context.is_contract_deployment == false);\n        assert(item.public_inputs.call_context.msg_sender == self.inputs.call_context.storage_contract_address);\n        assert(item.public_inputs.call_context.storage_contract_address == contract_address);\n\n        self.private_call_stack.push(item.hash());\n\n        item.public_inputs.return_values\n    }\n\n    pub fn call_public_function<ARGS_COUNT>(\n        &mut self,\n        contract_address: Field, \n        function_selector: Field, \n        args: [Field; ARGS_COUNT]\n    ) {\n        let args_hash = hash_args(args);\n        assert(args_hash == arguments::pack_arguments(args));\n        self.call_public_function_with_packed_args(contract_address, function_selector, args_hash)\n    }\n\n    pub fn call_public_function_no_args(\n        &mut self,\n        contract_address: Field, \n        function_selector: Field,\n    ) {\n        self.call_public_function_with_packed_args(contract_address, function_selector, 0)\n    }\n\n    pub fn call_public_function_with_packed_args(\n        &mut self,\n        contract_address: Field,\n        function_selector: Field,\n        args_hash: Field\n    ) {\n        let fields = enqueue_public_function_call_internal(\n            contract_address, \n            function_selector, \n            args_hash\n        );\n        let item = PublicCallStackItem {\n            contract_address: fields[0],\n            function_data: FunctionData {\n                function_selector: fields[1],\n                is_internal: fields[2] as bool,\n                is_private: fields[3] as bool,\n                is_constructor: fields[4] as bool,\n            },\n            public_inputs: PublicCircuitPublicInputs {\n                call_context: CallContext {\n                    msg_sender : fields[5],\n                    storage_contract_address : fields[6],\n                    portal_contract_address : fields[7],\n                    function_selector: fields[8], // practically same as fields[1]\n                    is_delegate_call : fields[9] as bool,\n                    is_static_call : fields[10] as bool,\n                    is_contract_deployment: fields[11] as bool,\n                },\n                args_hash: fields[12],\n                return_values: [0; RETURN_VALUES_LENGTH],\n                contract_storage_update_requests: [ContractStorageUpdateRequest::empty(); MAX_PUBLIC_DATA_UPDATE_REQUESTS_PER_CALL],\n                contract_storage_read: [ContractStorageRead::empty(); MAX_PUBLIC_DATA_READS_PER_CALL],\n                public_call_stack: [0; MAX_PUBLIC_CALL_STACK_LENGTH_PER_CALL],\n                new_commitments: [0; MAX_NEW_COMMITMENTS_PER_CALL],\n                new_nullifiers: [0; MAX_NEW_NULLIFIERS_PER_CALL],\n                new_l2_to_l1_msgs:[0; MAX_NEW_L2_TO_L1_MSGS_PER_CALL],\n                unencrypted_logs_hash:[0; NUM_FIELDS_PER_SHA256],\n                unencrypted_log_preimages_length: 0,\n                block_data: HistoricBlockData::empty(),\n                prover_address: 0,\n            },\n            is_execution_request: true,\n        };\n\n        assert(contract_address == item.contract_address);\n        assert(function_selector == item.function_data.function_selector);\n        \n        assert(args_hash == item.public_inputs.args_hash);\n\n        // Assert that the call context of the enqueued call generated by the oracle matches our request.\n        // We are issuing a regular call which is not delegate, static, or deployment. We also constrain\n        // the msg_sender in the nested call to be equal to our address, and the execution context address\n        // for the nested call to be equal to the address we actually called.\n        assert(item.public_inputs.call_context.is_delegate_call == false);\n        assert(item.public_inputs.call_context.is_static_call == false);\n        assert(item.public_inputs.call_context.is_contract_deployment == false);\n        assert(item.public_inputs.call_context.msg_sender == self.inputs.call_context.storage_contract_address);\n        assert(item.public_inputs.call_context.storage_contract_address == contract_address);\n\n        self.public_call_stack.push(item.hash());\n    }\n}\n\nuse crate::abi::{\n    ContractStorageRead,\n    ContractStorageUpdateRequest\n};\n\nstruct PublicContext {\n    inputs: abi::PublicContextInputs,\n\n    args_hash : Field,\n    return_values : BoundedVec<Field, RETURN_VALUES_LENGTH>,\n\n    contract_storage_update_requests: BoundedVec<ContractStorageUpdateRequest, MAX_PUBLIC_DATA_UPDATE_REQUESTS_PER_CALL>,\n    contract_storage_read: BoundedVec<ContractStorageRead, MAX_PUBLIC_DATA_READS_PER_CALL>,\n    public_call_stack: BoundedVec<Field, MAX_PUBLIC_CALL_STACK_LENGTH_PER_CALL>,\n\n    new_commitments: BoundedVec<Field, MAX_NEW_COMMITMENTS_PER_CALL>,\n    new_nullifiers: BoundedVec<Field, crate::abi::MAX_NEW_NULLIFIERS_PER_CALL>,\n\n    new_l2_to_l1_msgs: BoundedVec<Field, crate::abi::MAX_NEW_L2_TO_L1_MSGS_PER_CALL>,\n\n    unencrypted_logs_hash: BoundedVec<Field, NUM_FIELDS_PER_SHA256>,\n    unencrypted_logs_preimages_length: Field,\n\n    block_data: HistoricBlockData,\n    prover_address: Field,\n}\n\nimpl PublicContext {\n    pub fn new(inputs: abi::PublicContextInputs, args_hash: Field) -> PublicContext {\n        let empty_storage_read = ContractStorageRead::empty();\n        let empty_storage_update = ContractStorageUpdateRequest::empty();\n        PublicContext {\n            inputs: inputs,\n\n            args_hash: args_hash,\n            return_values: BoundedVec::new(0),\n\n            contract_storage_update_requests: BoundedVec::new(empty_storage_update),\n            contract_storage_read: BoundedVec::new(empty_storage_read),\n            public_call_stack: BoundedVec::new(0),\n\n            new_commitments: BoundedVec::new(0),\n            new_nullifiers: BoundedVec::new(0),\n\n            new_l2_to_l1_msgs: BoundedVec::new(0),\n\n            \n            unencrypted_logs_hash: BoundedVec::new(0),\n            unencrypted_logs_preimages_length: 0,\n\n            block_data: inputs.block_data,\n            prover_address: 0,\n\n            // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n            // encrypted_logs_preimages: Vec::new(),\n            // unencrypted_logs_preimages: Vec::new(),\n        }\n    }\n\n    pub fn msg_sender(self) -> Field {\n        self.inputs.call_context.msg_sender\n    }\n\n    pub fn this_address(self) -> Field {\n        self.inputs.call_context.storage_contract_address\n    }\n\n    pub fn this_portal_address(self) -> Field {\n        self.inputs.call_context.portal_contract_address\n    }\n\n    pub fn chain_id(self) -> Field {\n        self.inputs.public_global_variables.chain_id\n    }\n\n    pub fn version(self) -> Field {\n        self.inputs.public_global_variables.version\n    }\n\n    pub fn selector(self) -> Field {\n        self.inputs.call_context.function_selector\n    }\n\n    pub fn block_number(self) -> Field {\n        self.inputs.public_global_variables.block_number\n    }\n\n    pub fn timestamp(self) -> Field {\n        self.inputs.public_global_variables.timestamp\n    }\n\n    pub fn finish(self) -> abi::PublicCircuitPublicInputs {\n        // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n        let unencrypted_logs_hash = [0; NUM_FIELDS_PER_SHA256];\n        let unencrypted_log_preimages_length = 0;\n\n\n        // Compute the public call stack hashes\n        let pub_circuit_pub_inputs = abi::PublicCircuitPublicInputs {\n            call_context: self.inputs.call_context, // Done\n            args_hash: self.args_hash, // Done\n            contract_storage_update_requests: self.contract_storage_update_requests.storage,\n            contract_storage_read: self.contract_storage_read.storage,\n            return_values: self.return_values.storage,\n            new_commitments: self.new_commitments.storage,\n            new_nullifiers: self.new_nullifiers.storage,\n            public_call_stack: self.public_call_stack.storage,\n            new_l2_to_l1_msgs: self.new_l2_to_l1_msgs.storage,\n            unencrypted_logs_hash: unencrypted_logs_hash,\n            unencrypted_log_preimages_length: unencrypted_log_preimages_length,\n            block_data: self.inputs.block_data,\n            prover_address: self.prover_address,\n        };\n        pub_circuit_pub_inputs\n    }\n\n    pub fn push_new_note_hash(&mut self, note_hash: Field) {\n        self.new_commitments.push(note_hash);\n    }\n\n    pub fn push_new_nullifier(&mut self, nullifier: Field, _nullified_commitment: Field) {\n        self.new_nullifiers.push(nullifier);\n    }\n\n    pub fn message_portal(&mut self, content: Field) {\n        self.new_l2_to_l1_msgs.push(content);\n    }\n\n    // PrivateContextInputs must be temporarily passed in to prevent too many unknowns\n    // Note this returns self to get around an issue where mutable structs do not maintain mutations unless reassigned\n    pub fn consume_l1_to_l2_message(&mut self, msg_key: Field, content: Field, secret: Field) {\n        let this = (*self).this_address();\n        let nullifier = process_l1_to_l2_message(self.block_data.l1_to_l2_messages_tree_root, this, msg_key, content, secret);\n\n        // Push nullifier (and the \"commitment\" corresponding to this can be \"empty\")\n        self.push_new_nullifier(nullifier, EMPTY_NULLIFIED_COMMITMENT)\n    }\n\n    pub fn accumulate_encrypted_logs<N>(&mut self, log: [Field; N]) {\n        let _void1 = self;\n        let _void2 = log;\n        // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n    }\n\n    pub fn accumulate_unencrypted_logs<T>(&mut self, log: T) {\n        let _void1 = self;\n        let _void2 = log;\n        // TODO(https://github.com/AztecProtocol/aztec-packages/issues/1165)\n    }\n\n    pub fn call_public_function<ARGS_COUNT>(\n        _self: Self,\n        contract_address: Field, \n        function_selector: Field,\n        args: [Field; ARGS_COUNT],\n    ) -> [Field; RETURN_VALUES_LENGTH] {\n        let args_hash = abi::hash_args(args);\n        assert(args_hash == arguments::pack_arguments(args));\n        call_public_function_internal(\n            contract_address, \n            function_selector, \n            args_hash,\n        )\n    }\n\n    pub fn call_public_function_no_args(\n        _self: Self,\n        contract_address: Field, \n        function_selector: Field,\n    ) -> [Field; RETURN_VALUES_LENGTH] {\n        call_public_function_internal(\n            contract_address, \n            function_selector, \n            0,\n        )\n    }\n\n}\n\nstruct Context {\n    private: Option<&mut PrivateContext>,\n    public: Option<&mut PublicContext>,\n}\n\nimpl Context {\n    pub fn private(context: &mut PrivateContext) -> Context {\n        Context {\n            private: Option::some(context),\n            public: Option::none()\n        }\n    }\n\n    pub fn public(context: &mut PublicContext) -> Context {\n        Context {\n            public: Option::some(context),\n            private: Option::none()\n        }\n    }\n\n    pub fn none() -> Context {\n        Context {\n            public: Option::none(),\n            private: Option::none()\n        }\n    }\n}",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/context.nr"
+      },
+      "39": {
+        "source": "use dep::std::hash::{pedersen_hash_with_separator, sha256};\nuse crate::constants_gen::{\n  GENERATOR_INDEX__SIGNATURE_PAYLOAD,\n  GENERATOR_INDEX__L1_TO_L2_MESSAGE_SECRET,\n};\n\npub fn sha256_to_field<N>(bytes_to_hash: [u8; N]) -> Field {\n  let sha256_hashed = sha256(bytes_to_hash);\n\n  // Convert it to a field element\n  let mut v = 1;\n  let mut high = 0 as Field;\n  let mut low = 0 as Field;\n\n  for i in 0..16 {\n      high = high + (sha256_hashed[15 - i] as Field) * v;\n      low = low + (sha256_hashed[16 + 15 - i] as Field) * v;\n      v = v * 256;\n  }\n\n  // Abuse that a % p + b % p = (a + b) % p and that low < p\n  let hash_in_a_field = low + high * v;\n\n  hash_in_a_field\n}\n\npub fn compute_secret_hash(secret: Field) -> Field {\n  // TODO(#1205) This is probably not the right index to use\n  pedersen_hash([secret], GENERATOR_INDEX__L1_TO_L2_MESSAGE_SECRET)\n}\n\npub fn pedersen_hash<N>(inputs: [Field; N], hash_index: u32) -> Field {\n  pedersen_hash_with_separator(inputs, hash_index)\n}",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/hash.nr"
+      },
+      "54": {
+        "source": "#[oracle(packArguments)]\nfn pack_arguments_oracle<N>(_args: [Field; N]) -> Field {}\n\n// TODO: explain what this does.\nunconstrained pub fn pack_arguments<N>(args: [Field; N]) -> Field {\n    pack_arguments_oracle(args)\n}\n",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/oracle/arguments.nr"
+      },
+      "59": {
+        "source": "use crate::types::point::Point;\nuse crate::address::compute_address;\n\n#[oracle(getPublicKeyAndPartialAddress)]\nfn get_public_key_and_partial_address_oracle(_address: Field) -> [Field; 3] {}\n\nunconstrained fn get_public_key_and_partial_address_internal(address: Field) -> [Field; 3] {\n  get_public_key_and_partial_address_oracle(address)\n}\n\npub fn get_public_key(address: Field) -> Point {\n  let result = get_public_key_and_partial_address_internal(address);\n  let pub_key_x = result[0];\n  let pub_key_y = result[1];\n  let partial_address = result[2];\n  \n  let calculated_address = compute_address(pub_key_x, pub_key_y, partial_address);\n  assert(calculated_address == address);\n  \n  Point::new(pub_key_x, pub_key_y)\n}\n",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/oracle/get_public_key.nr"
+      },
+      "60": {
+        "source": "use crate::oracle::get_public_key::get_public_key;\nuse crate::types::point::Point;\n\n#[oracle(getSecretKey)]\nfn get_secret_key_oracle(\n    _owner: Point,\n) -> [Field; dep::std::grumpkin_scalar::GRUMPKIN_SCALAR_SERIALIZED_LEN] {\n}\n\nunconstrained fn get_secret_key_internal(owner_public_key: Point) -> dep::std::grumpkin_scalar::GrumpkinScalar {\n    dep::std::grumpkin_scalar::deserialize_grumpkin_scalar(get_secret_key_oracle(owner_public_key))\n}\n\npub fn get_secret_key(owner: Field) -> dep::std::grumpkin_scalar::GrumpkinScalar {\n    let owner_public_key = get_public_key(owner);\n    let secret = get_secret_key_internal(owner_public_key);\n\n    // Constrain the owner - Nullifier secret key is currently just the encryption private key so we can constrain\n    // the owner by deriving the public key from the secret key and checking the result.\n    let computed_public_key = dep::std::grumpkin_scalar_mul::grumpkin_fixed_base(secret);\n    assert(owner_public_key.x == computed_public_key[0]);\n    assert(owner_public_key.y == computed_public_key[1]);\n\n    secret\n}\n",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/oracle/get_secret_key.nr"
+      },
+      "62": {
+        "source": "\n// contract_address + \n// args_hash +\n// crate::abi::FUNCTION_DATA_SIZE +\n// crate::abi::CALL_CONTEXT_SIZE +\n// = 2 + 4 + 7\nglobal ENQUEUE_PUBLIC_FUNCTION_CALL_RETURN_SIZE: Field = 13;\n\n#[oracle(enqueuePublicFunctionCall)]\nfn enqueue_public_function_call_oracle(\n    _contract_address: Field, \n    _function_selector: Field, \n    _args_hash: Field,\n) -> [Field; ENQUEUE_PUBLIC_FUNCTION_CALL_RETURN_SIZE] {}\n\nunconstrained pub fn enqueue_public_function_call_internal(\n    contract_address: Field, \n    function_selector: Field,\n    args_hash: Field\n) -> [Field; ENQUEUE_PUBLIC_FUNCTION_CALL_RETURN_SIZE] {\n    enqueue_public_function_call_oracle(\n        contract_address, \n        function_selector, \n        args_hash,\n    )\n}",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/oracle/enqueue_public_function_call.nr"
+      },
+      "65": {
+        "source": "\n#[oracle(storageRead)]\nfn storage_read_oracle<N>(\n    _storage_slot: Field,\n    _number_of_elements: Field,\n) -> [Field; N] {}\n\nunconstrained fn storage_read_oracle_wrapper<N>(_storage_slot: Field)-> [Field; N] {\n    storage_read_oracle(_storage_slot, N)\n}\n\npub fn storage_read<T, N>(\n    storage_slot: Field,\n    deserialize: fn ([Field; N]) -> T,\n) -> T {\n    let fields = storage_read_oracle_wrapper(storage_slot);\n    deserialize(fields)\n}\n\n#[oracle(storageWrite)]\nfn storage_write_oracle<N>(\n    _storage_slot: Field,\n    _values: [Field; N],\n) -> [Field; N] {}\n\n// TODO: Remove return value.\nunconstrained pub fn storage_write<N>(\n    storage_slot: Field,\n    fields: [Field; N]\n) {\n    let _hash = storage_write_oracle(storage_slot, fields);\n}",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/oracle/storage.nr"
+      },
+      "68": {
+        "source": "use crate::{\n    abi,\n    hash::pedersen_hash,\n    abi::{\n        PublicCircuitPublicInputs,\n        FunctionData,\n    },\n};\nuse crate::constants_gen::{\n    RETURN_VALUES_LENGTH,\n    GENERATOR_INDEX__CALL_STACK_ITEM,\n};\n\n// oracles\nuse crate::oracle::{\n    enqueue_public_function_call::enqueue_public_function_call_internal,\n};\n\nstruct PublicCallStackItem {\n    contract_address: Field,\n    function_data: FunctionData,\n    public_inputs: PublicCircuitPublicInputs,\n    is_execution_request: bool,\n}\n\nimpl PublicCallStackItem {\n    pub fn hash(self) -> Field {\n        pedersen_hash([\n            self.contract_address,\n            self.function_data.hash(),\n            self.public_inputs.hash(),\n        ], GENERATOR_INDEX__CALL_STACK_ITEM)\n    }\n}\n\n",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/public_call_stack_item.nr"
+      },
+      "72": {
+        "source": "use crate::context::{PrivateContext, PublicContext, Context};\nuse dep::std::option::Option;\nuse crate::hash::pedersen_hash;\n\n// docs:start:map\nstruct Map<V> {\n    context: Context,\n    storage_slot: Field,\n    state_var_constructor: fn(Context, Field) -> V,\n}\n// docs:end:map\n\nimpl<V> Map<V> {\n    // docs:start:new\n    pub fn new(\n        context: Context,\n        storage_slot: Field,\n        state_var_constructor: fn(Context, Field) -> V,\n    ) -> Map<V> {\n        assert(storage_slot != 0, \"Storage slot 0 not allowed. Storage slots must start from 1.\");\n        Map {\n            context,\n            storage_slot,\n            state_var_constructor,\n        }\n    }\n    // docs:end:new\n\n    // docs:start:at\n    pub fn at(self, key: Field) -> V {\n        // TODO(#1204): use a generator index for the storage slot\n        let derived_storage_slot = pedersen_hash([self.storage_slot, key],0);\n\n        let state_var_constructor = self.state_var_constructor;\n        state_var_constructor(self.context, derived_storage_slot)\n    }\n    // docs:end:at\n}\n",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/state_vars/map.nr"
+      },
+      "73": {
+        "source": "use crate::context::{Context};\nuse crate::oracle::storage::storage_read;\nuse crate::oracle::storage::storage_write;\nuse crate::types::type_serialization::TypeSerializationInterface;\nuse dep::std::option::Option;\n\n// docs:start:public_state_struct\nstruct PublicState<T, T_SERIALIZED_LEN> {\n    context: Context,\n    storage_slot: Field,\n    serialization_methods: TypeSerializationInterface<T, T_SERIALIZED_LEN>,\n}\n// docs:end:public_state_struct\n\nimpl<T, T_SERIALIZED_LEN> PublicState<T, T_SERIALIZED_LEN> {\n    // docs:start:public_state_struct_new\n    pub fn new(\n        // Note: Passing the contexts to new(...) just to have an interface compatible with a Map.\n        context: Context,\n        storage_slot: Field,\n        serialization_methods: TypeSerializationInterface<T, T_SERIALIZED_LEN>,\n    ) -> Self {\n        assert(storage_slot != 0, \"Storage slot 0 not allowed. Storage slots must start from 1.\");\n        PublicState {\n            context,\n            storage_slot,\n            serialization_methods,\n        }\n    }\n    // docs:end:public_state_struct_new\n\n    // docs:start:public_state_struct_read\n    pub fn read(self) -> T {\n        assert(self.context.private.is_none(), \"Public state writes only supported in public functions\");\n        storage_read(self.storage_slot, self.serialization_methods.deserialize)\n    }\n    // docs:end:public_state_struct_read\n\n    // docs:start:public_state_struct_write\n    pub fn write(self, value: T) {\n        assert(self.context.private.is_none(), \"Public state writes only supported in public functions\");\n        let serialize = self.serialization_methods.serialize;\n        let fields = serialize(value);\n        storage_write(self.storage_slot, fields);\n    }\n    // docs:end:public_state_struct_write\n}\n",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/state_vars/public_state.nr"
+      },
+      "77": {
+        "source": "struct AztecAddress {\n  address: Field\n}\n\nimpl AztecAddress {\n  pub fn new(address: Field) -> Self {\n    Self {\n      address\n    }\n  }\n\n  pub fn eq(self: Self, other: Self) -> bool {\n    self.address == other.address\n  }\n\n  pub fn serialize(self: Self) -> [Field; 1] {\n    [self.address]\n  }\n\n  pub fn deserialize(fields: [Field; 1]) -> Self {\n    Self {\n      address: fields[0]\n    }\n  }\n}\n\nstruct EthereumAddress {\n  address: Field\n}\n\nimpl EthereumAddress {\n  pub fn new(address: Field) -> Self {\n    // Check that it actually will fit. Spending a lot of constraints here :grimacing:\n    let bytes = address.to_be_bytes(32);\n    for i in 0..12 {\n        assert(bytes[i] == 0, \"Value too large for an ethereum address\");\n    }\n    Self {\n      address\n    }\n  }\n\n\n  pub fn serialize(self: Self) -> [Field; 1] {\n    [self.address]\n  }\n\n  pub fn deserialize(fields: [Field; 1]) -> Self {\n    Self {\n      address: fields[0]\n    }\n  }\n}",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/types/address.nr"
+      },
+      "81": {
+        "source": "use crate::types::type_serialization::TypeSerializationInterface;\n\nglobal BOOL_SERIALIZED_LEN: Field = 1;\n\nfn deserializeBool(fields: [Field; BOOL_SERIALIZED_LEN]) -> bool {\n    fields[0] as bool\n}\n\nfn serializeBool(value: bool) -> [Field; BOOL_SERIALIZED_LEN] {\n    [value as Field]\n}\n\nglobal BoolSerializationMethods = TypeSerializationInterface {\n    deserialize: deserializeBool,\n    serialize: serializeBool,\n};",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/types/type_serialization/bool_serialization.nr"
+      },
+      "82": {
+        "source": "use crate::types::type_serialization::TypeSerializationInterface;\n\n// docs:start:field_serialization\nglobal FIELD_SERIALIZED_LEN: Field = 1;\n\nfn deserializeField(fields: [Field; FIELD_SERIALIZED_LEN]) -> Field {\n    fields[0]\n}\n\nfn serializeField(value: Field) -> [Field; FIELD_SERIALIZED_LEN] {\n    [value]\n}\n\nglobal FieldSerializationMethods = TypeSerializationInterface {\n    deserialize: deserializeField,\n    serialize: serializeField,\n};\n// docs:end:field_serialization",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/types/type_serialization/field_serialization.nr"
+      },
+      "84": {
+        "source": "use crate::types::type_serialization::TypeSerializationInterface;\nuse crate::types::address::AztecAddress;\n\nglobal AZTEC_ADDRESS_SERIALIZED_LEN: Field = 1;\n\nfn deserialize(fields: [Field; AZTEC_ADDRESS_SERIALIZED_LEN]) -> AztecAddress {\n    AztecAddress::new(fields[0])\n}\n\nfn serialize(value: AztecAddress) -> [Field; AZTEC_ADDRESS_SERIALIZED_LEN] {\n    [value.address]\n}\n\nglobal AztecAddressSerializationMethods = TypeSerializationInterface {\n    deserialize,\n    serialize,\n};",
+        "path": "/home/josh/nargo/github.com/AztecProtocol/aztec-packagesaztec-packages-v0.15.1/yarn-project/aztec-nr/aztec/src/types/type_serialization/aztec_address_serialization.nr"
+      }
+    }
+  }
+}
