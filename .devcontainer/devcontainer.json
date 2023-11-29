@@ -1,6 +1,6 @@
 {
   "dockerComposeFile": "docker-compose.yml",
-  "service": "devcontainer",
+  "service": "aztec-sandbox",
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose"
 }
