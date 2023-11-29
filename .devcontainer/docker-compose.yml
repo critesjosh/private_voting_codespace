@@ -36,3 +36,6 @@ services:
       ARCHIVER_VIEM_POLLING_INTERVAL_MS: 500
     volumes:
       - ./log:/usr/src/yarn-project/aztec-sandbox/log:rw
+  
+  cli:
+    image: "aztecprotocol/cli:${SANDBOX_VERSION:-latest}"
