@@ -1,7 +1,8 @@
 {
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "devcontainer",
-  "shutdownAction": "stopCompose",
+	"build": {
+		"context": ".",
+		"dockerfile": "Dockerfile"
+	},
   "features": { "ghcr.io/devcontainers/features/docker-in-docker:2": {}},
   "customizations": {
 		// Configure properties specific to VS Code.
