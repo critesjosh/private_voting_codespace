@@ -14,7 +14,6 @@ contract Voting {
             field_serialization::{ FieldSerializationMethods, FIELD_SERIALIZED_LEN},
         }, 
     };
-
     struct Storage {
     admin: PublicState<AztecAddress, AZTEC_ADDRESS_SERIALIZED_LEN>, // admin can end vote
     tally: Map<PublicState<Field, FIELD_SERIALIZED_LEN>>, // we will store vote as key and number of votes as value
