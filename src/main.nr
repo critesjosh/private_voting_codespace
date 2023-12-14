@@ -1,16 +1,18 @@
 contract Voting {
+    use dep::protocol_types::{
+        address::AztecAddress,
+        constants::EMPTY_NULLIFIED_COMMITMENT,
+    };
     use dep::aztec::{
-    context::{PrivateContext, Context},
-    oracle::get_secret_key::get_secret_key, // used to compute nullifier
-    selector::compute_selector, // used to compute function selector for calling a function 
-     state_vars::{ map::Map, public_state::PublicState,}, 
-     types::type_serialization::{ // serialization methods for using booleans and aztec addresses
-        bool_serialization::{BoolSerializationMethods, BOOL_SERIALIZED_LEN},
-        aztec_address_serialization::{AztecAddressSerializationMethods, AZTEC_ADDRESS_SERIALIZED_LEN},
-        field_serialization::{ FieldSerializationMethods, FIELD_SERIALIZED_LEN},
-    }, 
-    types::address::{AztecAddress},
-    constants_gen::EMPTY_NULLIFIED_COMMITMENT,
+        context::{PrivateContext, Context},
+        oracle::get_secret_key::get_secret_key, // used to compute nullifier
+        selector::compute_selector, // used to compute function selector for calling a function 
+        state_vars::{ map::Map, public_state::PublicState,}, 
+        types::type_serialization::{ // serialization methods for using booleans and aztec addresses
+            bool_serialization::{BoolSerializationMethods, BOOL_SERIALIZED_LEN},
+            address_serialization::{AddressSerializationMethods, AZTEC_ADDRESS_SERIALIZED_LEN},
+            field_serialization::{ FieldSerializationMethods, FIELD_SERIALIZED_LEN},
+        }, 
     };
 
     struct Storage {
