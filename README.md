@@ -1,5 +1,7 @@
 # Private Voting Example Codespace
 
+[Start your codespace from the codespace dropdown](https://docs.github.com/en/codespaces/getting-started/quickstart).
+
 Get and run the sandbox with this command:
 
 ```bash
