@@ -1,6 +1,6 @@
 #!/bin/bash
 
-copy_location="."
+copy_to_file_path="."
 version="aztec-packages-v0.16.9"
 nargo_file_path="$copy_location/Nargo.toml"
 
