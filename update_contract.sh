@@ -2,12 +2,10 @@
 
 copy_location="."
 version="aztec-packages-v0.16.9"
+nargo_file_path="$copy_location/Nargo.toml"
 
 repo_url="https://github.com/AztecProtocol/aztec-packages.git"
 contracts_path="yarn-project/noir-contracts/src/contracts"
-
-# Define the path to the Nargo.toml file
-nargo_file_path="Nargo.toml"
 
 # Check if the file exists
 if [ ! -f "$nargo_file_path" ]; then
