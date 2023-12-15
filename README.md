@@ -7,6 +7,20 @@ Run:
 /bin/bash -c "$(curl -fsSL 'https://sandbox.aztec.network')"
 ```
 
+## Update contract
+
+Get the contract code from the monorepo. Specify the version to get at the top of the script.
+
+```bash
+./update_contract.sh
+```
+
+You may need to update permissions with:
+
+```bash
+chmod +x update_contract.sh
+```
+
 ## Compile
 
 ```bash
