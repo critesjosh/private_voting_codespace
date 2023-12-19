@@ -18,7 +18,7 @@ async function main() {
     const latest = filtered[0].tag_name;
 
     // TODO: add the prerelease to this object!
-    const workflowOutput = JSON.stringify({ latestReleaseTag: latest });
+    const workflowOutput = JSON.stringify({ latest });
     console.log(workflowOutput); // DON'T REMOVE, GITHUB WILL CAPTURE THIS OUTPUT
 }
 
