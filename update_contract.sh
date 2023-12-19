@@ -33,7 +33,7 @@ echo $GITHUB_ACTIONS $tmp_dir
 
 # Clone the repository into a tmp folder
 git clone $repo_url $tmp_dir
-cd $tmp_dir && git checkout $version && cd ..
+cd $tmp_dir && git checkout $version_tag && cd ..
 
 # Check if clone was successful
 if [ $? -eq 0 ]; then
