@@ -26,3 +26,11 @@ jobs:
 
       - name: Check and update tutorials
         run: bash ./update_contract.sh $version_tag
+
+      - name: Commit and push changes
+        run: |
+          git add .
+          git commit -m "Automated changes" -a || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
