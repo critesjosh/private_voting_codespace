@@ -1,7 +1,7 @@
 #!/bin/bash
 
 copy_to_file_path="."
-version="aztec-packages-v0.16.9"
+version_tag="$1"
 nargo_file_path="$copy_to_file_path/Nargo.toml"
 
 repo_url="https://github.com/AztecProtocol/aztec-packages.git"
@@ -51,4 +51,3 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to clone the repository"
 fi
-
