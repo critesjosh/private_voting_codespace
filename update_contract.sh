@@ -29,7 +29,7 @@ else
     tmp_dir="./tmp"
 fi
 
-echo $GITHUB_ACTIONS $tmp_dir
+echo $version_tag
 
 # Clone the repository into a tmp folder
 git clone $repo_url $tmp_dir
