@@ -4,6 +4,12 @@ on:
   schedule:
     # Runs at 05:00 UTC every day
     - cron: "0 5 * * *"
+  workflow_dispatch:
+    inputs:
+      input1:
+        description: "Input 1 Description"
+        required: true
+        default: "default value"
 
 jobs:
   my_job:
