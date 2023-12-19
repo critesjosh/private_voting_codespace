@@ -17,7 +17,7 @@ async function main() {
 
     console.log(filtered)
 
-    const latest = filtered.tag_name;
+    const latest = filtered[0].tag_name;
 
     // TODO: add the prerelease to this object!
     const workflowOutput = JSON.stringify({ latestReleaseTag: latest });
