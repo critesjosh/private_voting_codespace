@@ -59,3 +59,5 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to clone the repository"
 fi
+
+rm -rf $tmp_dir
