@@ -41,16 +41,16 @@ if [ $? -eq 0 ]; then
     # Check if the directory exists
     if [ -d "$tmp_dir/$contracts_path/$name_value" ]; then
         echo "Directory found: $name_value"
-        sudo cp -r $tmp_dir/$contracts_path/$name_value/src/ $copy_location/
+        cp -r $tmp_dir/$contracts_path/$name_value/src/ $copy_to_file_path/
         rm -rf $tmp_dir
-        echo "Copied the contracts to $copy_location"
+        echo "Copied the contracts to $copy_to_file_path"
         # You can add additional commands here to handle the directory
 
         # Remove docs comments from the files
-        find "$copy_location/src" -type f -name "*.nr" | while read file; do
+        find "$copy_to_file_path/src" -type f -name "*.nr" | while read file; do
             # Remove lines starting with '// docs:'
             sed -i '/[ \t]*\/\/ docs:.*/d' "$file"
-            cat "$file"
+
             echo "Comments removed from $file"
         done
     else
