@@ -50,7 +50,7 @@ if [ $? -eq 0 ]; then
         find "$copy_location/src" -type f -name "*.nr" | while read file; do
             # Remove lines starting with '// docs:'
             sed -i '/[ \t]*\/\/ docs:.*/d' "$file"
-
+            cat "$file"
             echo "Comments removed from $file"
         done
     else
