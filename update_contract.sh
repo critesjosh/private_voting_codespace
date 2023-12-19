@@ -23,18 +23,24 @@ else
     echo "The value of the 'name' field is: $name_value"
 fi
 
+if [ "$GITHUB_ACTIONS" == "true" ]; then
+    tmp_dir="$GITHUB_WORKSPACE"
+else
+    tmp_dir="/tmp"
+fi
+
 # Clone the repository into a tmp folder
-git clone $repo_url tmp
-cd tmp && git checkout $version && cd ..
+git clone $repo_url $tmp_dir
+cd $tmp_dir && git checkout $version && cd ..
 
 # Check if clone was successful
 if [ $? -eq 0 ]; then
 
     # Check if the directory exists
-    if [ -d "tmp/$contracts_path/$name_value" ]; then
+    if [ -d "$tmp_dir/$contracts_path/$name_value" ]; then
         echo "Directory found: $name_value"
-        cp -r tmp/$contracts_path/$name_value/src/ $copy_location/
-        rm -rf tmp
+        cp -r $tmp_dir/$contracts_path/$name_value/src/ $copy_location/
+        rm -rf $tmp_dir
         echo "Copied the contracts to $copy_location"
         # You can add additional commands here to handle the directory
 
