@@ -41,7 +41,7 @@ if [ $? -eq 0 ]; then
     # Check if the directory exists
     if [ -d "$tmp_dir/$contracts_path/$name_value" ]; then
         echo "Directory found: $name_value"
-        cp -r $tmp_dir/$contracts_path/$name_value/src/ $copy_location/
+        sudo cp -r $tmp_dir/$contracts_path/$name_value/src/ $copy_location/
         rm -rf $tmp_dir
         echo "Copied the contracts to $copy_location"
         # You can add additional commands here to handle the directory
