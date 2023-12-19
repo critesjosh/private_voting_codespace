@@ -15,8 +15,6 @@ async function main() {
         release => release.tag_name.includes('aztec-packages'),
     );
 
-    console.log(filtered)
-
     const latest = filtered[0].tag_name;
 
     // TODO: add the prerelease to this object!
