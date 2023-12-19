@@ -24,7 +24,7 @@ else
 fi
 
 if [ "$GITHUB_ACTIONS" == "true" ]; then
-    tmp_dir="$GITHUB_WORKSPACE"
+    tmp_dir="$GITHUB_WORKSPACE/tmp"
 else
     tmp_dir="/tmp"
 fi
