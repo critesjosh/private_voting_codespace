@@ -1,7 +1,5 @@
 
 async function main() {
-    console.log("Node.js version:", process.version);
-
     const fetchOpts = {
         headers: {},
     };
@@ -13,11 +11,11 @@ async function main() {
 
     const data = await res.json();
 
-    console.log(data)
-
     const filtered = data.filter(
         release => release.tag_name.includes('aztec-packages'),
     );
+
+    console.log(filtered)
 
     const latest = filtered.tag_name;
 
