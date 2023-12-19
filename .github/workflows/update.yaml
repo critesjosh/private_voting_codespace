@@ -1,4 +1,4 @@
-name: Update Tutorials
+name: Update Contract
 
 on:
   schedule:
@@ -11,8 +11,10 @@ on:
         required: true
         default: "default value"
 
+permissions: write-all
+
 jobs:
-  my_job:
+  update_contract:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
