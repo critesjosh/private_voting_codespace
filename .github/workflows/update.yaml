@@ -1,0 +1,24 @@
+name: Update Tutorials
+
+on:
+  schedule:
+    # Runs at 05:00 UTC every day
+    - cron: "0 5 * * *"
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          path: "private_voting_codespace"
+
+      - name: Get version
+        id: versions_step
+        run: |
+          version_tag=$(node ./.github/scripts/fetchRelease.js)
+          echo "Output from Node.js script: $version_tag"
+
+      - name: Check and update tutorials
+        run: bash scripts/update_tutorials.sh $version_tag
