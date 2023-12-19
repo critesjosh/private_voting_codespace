@@ -13,6 +13,8 @@ async function main() {
 
     const data = await res.json();
 
+    console.log(data)
+
     const filtered = data.filter(
         release => release.tag_name.includes('aztec-packages'),
     );
