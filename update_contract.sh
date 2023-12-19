@@ -26,7 +26,7 @@ fi
 if [ "$GITHUB_ACTIONS" == "true" ]; then
     tmp_dir="$GITHUB_WORKSPACE/tmp"
 else
-    tmp_dir="/tmp"
+    tmp_dir="./tmp"
 fi
 
 echo $GITHUB_ACTIONS $tmp_dir
