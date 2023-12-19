@@ -25,4 +25,4 @@ jobs:
           echo "Output from Node.js script: $version_tag"
 
       - name: Check and update tutorials
-        run: bash scripts/update_tutorials.sh $version_tag
+        run: bash update_tutorials.sh $version_tag
