@@ -29,6 +29,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
+          git config --global user.email "jc@joshcrites.com"
+          git config --global user.name "Josh"
           git add .
           git commit -m "Automated changes" -a || echo "No changes to commit"
           git push
