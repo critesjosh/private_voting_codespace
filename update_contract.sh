@@ -29,6 +29,8 @@ else
     tmp_dir="/tmp"
 fi
 
+echo $GITHUB_ACTIONS $tmp_dir
+
 # Clone the repository into a tmp folder
 git clone $repo_url $tmp_dir
 cd $tmp_dir && git checkout $version && cd ..
