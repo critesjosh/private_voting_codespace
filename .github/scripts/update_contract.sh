@@ -2,6 +2,8 @@
 
 copy_to_file_path="."
 version_tag="$1"
+
+echo "var: $version_tag"
 nargo_file_path="$copy_to_file_path/Nargo.toml"
 
 repo_url="https://github.com/AztecProtocol/aztec-packages.git"
@@ -26,10 +28,8 @@ fi
 if [ "$GITHUB_ACTIONS" == "true" ]; then
     tmp_dir="$GITHUB_WORKSPACE/tmp"
 else
-    tmp_dir="./tmp"
+    tmp_dir="$copy_to_file_path/tmp"
 fi
-
-echo $version_tag
 
 # Clone the repository into a tmp folder
 git clone $repo_url $tmp_dir

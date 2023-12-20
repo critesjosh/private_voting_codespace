@@ -48,10 +48,10 @@ yarn test
 
 ## Update Contract
 
-Get the contract code from the monorepo. Specify the version to get at the top of the script.
+Get the contract code from the monorepo. The script will look at the versions defined in `./Nargo.toml` and fetch that version of the code from the monorepo.
 
 ```bash
-./update_contract.sh
+yarn update
 ```
 
 You may need to update permissions with:
