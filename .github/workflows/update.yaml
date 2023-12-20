@@ -7,9 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       input1:
-        description: "Input 1 Description"
-        required: true
-        default: "default value"
+        description: "Just run it."
+        required: false
 
 permissions: write-all
 
